@@ -1,0 +1,12 @@
+LAUNCHLY — Changelog
+=====================
+
+v1.0.0 — 2026-10-12
+--------------------
+- Initial release.
+- Pages: index, pricing, about, contact, 404.
+- Full design system in css/style.css (CSS custom properties for
+  one-step re-theming).
+- Vanilla JS: mobile nav, FAQ accordion, pricing monthly/yearly toggle,
+  testimonial carousel, scroll-reveal animations, demo form handling.
+- Full documentation at documentation/documentation.html.

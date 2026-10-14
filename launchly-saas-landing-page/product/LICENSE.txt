@@ -1,0 +1,52 @@
+LAUNCHLY — SaaS Landing Page Template
+Third-Party Assets & Usage Terms
+======================================
+
+IMPORTANT: The terms under which a buyer may use this template (how many
+end products it may be used in, whether it may be resold or redistributed,
+etc.) are set by the license type they purchase through the marketplace
+listing (e.g. a "Standard" vs "Extended" license on Creative Market).
+This file documents the assets bundled inside the template and does not
+itself grant marketplace purchase rights — update this section to point
+to your actual listing's license terms before publishing.
+
+INCLUDED ASSETS
+----------------
+1. Fonts — "Work Sans" and "Bricolage Grotesque"
+   Source: Google Fonts (fonts.google.com)
+   License: SIL Open Font License 1.1
+   These fonts are loaded from Google's CDN via a <link> tag in each
+   page's <head> and are free for personal and commercial use, with or
+   without attribution. You may also self-host them under the same
+   license if you prefer not to depend on Google's CDN.
+
+2. Icons
+   Source: Custom-built inline SVG, created specifically for this
+   template. No third-party icon library is used.
+   License: Included as part of this template; usage follows the same
+   terms as the template itself.
+
+3. Illustrations / product mockups
+   Source: Built entirely from CSS and inline SVG — no stock photography,
+   icon packs, or third-party illustrations are bundled with this
+   template.
+   License: Included as part of this template.
+
+4. Code (HTML, CSS, JavaScript)
+   Author: [seller name / shop name]
+   The markup, stylesheet and JavaScript in this template were written
+   for this product and are licensed to buyers under the marketplace's
+   standard license terms for the license type purchased.
+
+AUTHOR NOTES FOR THE SELLER
+----------------------------
+- Replace "[seller name / shop name]" above with your shop name before
+  publishing.
+- If you add your own photography, icon packs, or other third-party
+  assets later, list them here with their source and license so buyers
+  always know what they're allowed to do with each file.
+- Creative Market (and most marketplaces) prohibit bundling third-party
+  fonts, photos, or frameworks you don't have redistribution rights for,
+  and prohibit visible third-party trademarks in the preview or product —
+  this template avoids both by using only Google Fonts (CDN-loaded, not
+  bundled) and custom-built graphics.

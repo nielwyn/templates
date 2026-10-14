@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation — Launchly Template</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: var(--color-surface-soft); }
+  .docs-wrap { display: flex; max-width: 1160px; margin: 0 auto; padding: 40px 24px 100px; gap: 48px; }
+  .docs-side { width: 220px; flex-shrink: 0; position: sticky; top: 100px; align-self: flex-start; }
+  .docs-side a { display: block; padding: 8px 0; font-size: 14px; color: var(--color-ink-soft); }
+  .docs-side a:hover { color: var(--color-primary); }
+  .docs-content { flex: 1; min-width: 0; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 48px; }
+  .docs-content h1 { font-size: 32px; }
+  .docs-content h2 { font-size: 22px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--color-border); }
+  .docs-content h2:first-of-type { border-top: none; padding-top: 0; margin-top: 32px; }
+  .docs-content h3 { font-size: 16px; margin-top: 24px; }
+  .docs-content p, .docs-content li { font-size: 15px; color: var(--color-ink-soft); }
+  .docs-content ul, .docs-content ol { padding-left: 20px; margin-bottom: 16px; }
+  .docs-content li { margin-bottom: 6px; list-style: disc; }
+  .docs-content ol li { list-style: decimal; }
+  code, pre { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  code { background: var(--color-surface-alt); padding: 2px 6px; border-radius: 4px; color: var(--color-primary-dark); }
+  pre { background: var(--color-ink); color: #e2e8f0; padding: 18px 20px; border-radius: var(--radius-sm); overflow-x: auto; margin: 16px 0; }
+  pre code { background: none; color: inherit; padding: 0; }
+  .docs-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+  .docs-table th, .docs-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--color-border); }
+  .docs-table th { font-family: var(--font-display); font-size: 13px; }
+  .callout { background: var(--color-surface-alt); border-left: 3px solid var(--color-accent-dark); padding: 14px 18px; border-radius: 8px; font-size: 14px; margin: 16px 0; }
+  @media (max-width: 800px) { .docs-wrap { flex-direction: column; } .docs-side { display: none; } .docs-content { padding: 28px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-mark">L</span> Launchly</a>
+    <div class="nav-links">
+      <a href="../index.html">Live demo</a>
+      <a href="../contact.html">Support</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html" class="btn btn-primary btn-sm">Back to demo</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+  </div>
+  <div class="nav-mobile">
+    <a href="../index.html">Live demo</a>
+    <a href="../contact.html">Support</a>
+  </div>
+</nav>
+
+<div class="docs-wrap">
+  <aside class="docs-side">
+    <a href="#overview">Overview</a>
+    <a href="#included">What's included</a>
+    <a href="#getting-started">Getting started</a>
+    <a href="#structure">Folder structure</a>
+    <a href="#customize">Customization</a>
+    <a href="#forms">Wiring up forms</a>
+    <a href="#browser-support">Browser support</a>
+    <a href="#credits">Credits &amp; licenses</a>
+    <a href="#support">Support</a>
+  </aside>
+
+  <main class="docs-content">
+    <div class="eyebrow">Documentation</div>
+    <h1 id="overview">Launchly — SaaS Landing Page Template</h1>
+    <p>Thanks for picking up Launchly. This template is built with plain HTML, CSS and JavaScript — <strong>no build step, no frameworks, no dependencies to install.</strong> Unzip it and open <code>index.html</code> in any browser to get started.</p>
+
+    <h2 id="included">What's included</h2>
+    <ul>
+      <li><code>index.html</code> — homepage (hero, features, how it works, stats, testimonials, pricing, FAQ)</li>
+      <li><code>pricing.html</code> — dedicated pricing page with plan comparison table</li>
+      <li><code>about.html</code> — company story, values and team section</li>
+      <li><code>contact.html</code> — contact form and info page</li>
+      <li><code>404.html</code> — custom not-found page</li>
+      <li><code>css/style.css</code> — the entire design system in one file</li>
+      <li><code>js/main.js</code> — nav menu, FAQ accordion, pricing toggle, testimonial carousel, scroll animations, demo form handling</li>
+      <li><code>images/favicon.svg</code> — the template's favicon/logo mark</li>
+      <li><code>documentation/documentation.html</code> — this guide</li>
+      <li><code>LICENSE.txt</code>, <code>CHANGELOG.txt</code>, <code>README.txt</code></li>
+    </ul>
+
+    <h2 id="getting-started">Getting started</h2>
+    <p>Because there's no build tool, you have two options:</p>
+    <ol>
+      <li><strong>Open directly:</strong> double-click <code>index.html</code> — it will open in your default browser.</li>
+      <li><strong>Serve locally</strong> (recommended, so relative paths and future AJAX calls behave like production):
+        <pre><code># Node / bun
+bunx serve .
+
+# or Python
+python3 -m http.server 8080</code></pre>
+      </li>
+    </ol>
+    <div class="callout">Edit any page with a plain text editor or an IDE like VS Code. No npm install, no compiling — save the file and refresh your browser.</div>
+
+    <h2 id="structure">Folder structure</h2>
+    <pre><code>launchly/
+├── index.html
+├── pricing.html
+├── about.html
+├── contact.html
+├── 404.html
+├── css/style.css
+├── js/main.js
+├── images/favicon.svg
+├── documentation/documentation.html
+├── README.txt
+├── LICENSE.txt
+└── CHANGELOG.txt</code></pre>
+
+    <h2 id="customize">Customization</h2>
+    <h3>Colors</h3>
+    <p>Every color is a CSS variable at the top of <code>css/style.css</code>:</p>
+    <pre><code>:root {
+  --color-primary: #2f6b4f;
+  --color-accent: #e8b13a;
+  --color-ink: #16261f;
+}</code></pre>
+    <p>Change these values once and the whole site — buttons, icons, badges — updates automatically.</p>
+
+    <h3>Fonts</h3>
+    <p>Headings use <strong>Bricolage Grotesque</strong>, body text uses <strong>Work Sans</strong>, both loaded free from Google Fonts in the <code>&lt;head&gt;</code> of each page. To swap fonts, change the Google Fonts <code>&lt;link&gt;</code> tag and the <code>--font-body</code> / <code>--font-display</code> variables in <code>style.css</code>.</p>
+
+    <h3>Logo &amp; favicon</h3>
+    <p>The logo is the <code>.brand-mark</code> element (a styled "L") plus the "Launchly" text, both inline in the HTML — replace the letter and text with your own, or swap in an <code>&lt;img&gt;</code>. The favicon is <code>images/favicon.svg</code>; replace it with your own SVG or PNG (update the <code>&lt;link rel="icon"&gt;</code> tag if you change the file type).</p>
+
+    <h3>Content sections</h3>
+    <p>Every section is clearly commented by its <code>id</code> or class (<code>#features</code>, <code>#pricing</code>, <code>#faq</code>, etc.) — duplicate a card/block within a section and edit the text to add more items.</p>
+
+    <h3>Images</h3>
+    <p>The hero mockup, decorative dividers, trajectory arc and quote marks are built from pure CSS/SVG so the template ships with zero bundled photos — avoiding any image licensing issues. If you'd like to add real photography, use images you own the rights to, or a licensed source such as your own photos or a stock library whose license covers commercial use.</p>
+
+    <h2 id="forms">Wiring up forms</h2>
+    <p>The contact and newsletter forms are demo-only: submitting shows a success message via <code>js/main.js</code> but nothing is sent anywhere. To collect real submissions, pick one:</p>
+    <ul>
+      <li><strong>Form backend service</strong> (easiest): sign up for a service like Formspree or a similar form-endpoint provider, then set the form's <code>action</code> to the endpoint it gives you and remove the <code>data-demo-form</code> attribute, e.g. <code>&lt;form action="https://your-form-endpoint" method="POST"&gt;</code>.</li>
+      <li><strong>Static host form handling:</strong> if you deploy to a static host that offers built-in form handling, follow that host's documentation for the required form attributes.</li>
+      <li><strong>Your own backend:</strong> point <code>action</code> at your API endpoint and handle the POST server-side.</li>
+    </ul>
+
+    <h2 id="browser-support">Browser support</h2>
+    <p>Tested in the latest Chrome, Firefox, Safari and Edge. Uses modern but widely supported CSS (Grid, custom properties, <code>backdrop-filter</code>) and vanilla JS (<code>IntersectionObserver</code>). No Internet Explorer support.</p>
+
+    <h2 id="credits">Credits &amp; licenses</h2>
+    <table class="docs-table">
+      <thead><tr><th>Asset</th><th>Source</th><th>License</th></tr></thead>
+      <tbody>
+        <tr><td>Fonts: Work Sans, Bricolage Grotesque</td><td>Google Fonts</td><td>SIL Open Font License — free for commercial use</td></tr>
+        <tr><td>Icons</td><td>Custom inline SVG, hand-built for this template</td><td>Included under this template's license</td></tr>
+        <tr><td>Illustrations / mockups</td><td>Pure CSS &amp; SVG, no stock imagery used</td><td>Included under this template's license</td></tr>
+      </tbody>
+    </table>
+    <p>See <code>LICENSE.txt</code> in the root folder for full licensing details and usage terms for this template.</p>
+
+    <h2 id="support">Support</h2>
+    <p>Questions or issues? Email <strong>nghoangnghiabt@gmail.com</strong> and we'll get back to you as soon as we can.</p>
+  </main>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

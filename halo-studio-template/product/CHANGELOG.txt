@@ -1,0 +1,114 @@
+HALO — Changelog
+=================
+
+v1.1.5 — 2026-10-13
+--------------------
+- Fixed: the footer's giant "HALO" wordmark had its top portion visibly
+  cropped off — this predates v1.1.0, not something introduced by the
+  centering fixes in v1.1.4. Root cause: it was positioned with
+  `bottom: -8%`, a percentage that's relative to the FOOTER's height, not
+  the mark's own height. At this font size (up to 280px, ~336px rendered
+  with line-height) the mark is taller than the footer's actual content,
+  so an offset sized off the footer's height barely moved it — most of the
+  glyph sat above the footer's own top edge, where .footer's
+  overflow:hidden cropped it off.
+- Fix: the mark is now anchored flush to the footer's bottom edge, then
+  nudged down with `transform: translateY(18%)` instead — a transform
+  percentage is relative to the element's OWN height, so the crop is
+  always a fixed, modest fraction of the glyph regardless of how tall the
+  footer renders.
+
+v1.1.4 — 2026-10-13
+--------------------
+- Restored the giant translucent "HALO" wordmark behind the footer content
+  (removed in v1.1.3), rebuilt to center with flexbox instead of the
+  left:50% + transform:translateX(-50%) technique. That technique centers
+  by canceling the element's own (content-dependent) width against a
+  percentage transform, which has to be recomputed from scratch whenever
+  the rendered width changes, and gets permanently overwritten the moment
+  anything else (like the scroll-parallax tween) writes a plain pixel
+  transform to the same element. Flexbox centering isn't cached like that —
+  the browser repositions the child from the actual layout on every paint —
+  and the parallax now animates an inner <span> rather than the centered
+  element itself, so the two can never conflict.
+
+v1.1.3 — 2026-10-13
+--------------------
+- Removed the giant translucent "HALO" wordmark that sat behind the footer
+  content, along with its scroll-parallax (js/animations.js) and the
+  element's styling (css/style.css). Replaced with a footer marquee band
+  ("Let's build something worth bragging about — Start a project —"),
+  reusing the same plain CSS @keyframes marquee already used elsewhere on
+  the page, so the footer keeps a motion accent without introducing a new,
+  separately-animated element. Superseded by v1.1.4.
+
+v1.1.2 — 2026-10-13
+--------------------
+- Fixed: the velocity-reactive marquee (added in v1.1.0) visibly jumped/
+  teleported every time it reacted to scroll, instead of smoothly
+  speeding up. Root cause: it worked by shortening the CSS animation's
+  animation-duration while the animation was already running. Changing
+  animation-duration on a live CSS animation doesn't preserve its visual
+  position — the browser recomputes progress as (elapsed time) / (new
+  duration), so the position snaps forward or backward immediately.
+  Measured directly: a single duration change jumped the marquee's
+  translateX by over 160px in one frame.
+- Fix: removed the scroll-reactive speed changes entirely. The marquee is
+  now a plain, constant-speed CSS animation with no JS touching it at
+  all — glitch-free by construction. The "speeds up on scroll" flourish
+  wasn't worth this failure mode.
+
+v1.1.1 — 2026-10-13
+--------------------
+- Fixed: the hero headline and CTA headline could get stuck partway
+  through their entrance animation (visibly faded/desaturated instead of
+  fully revealed) in any context where the browser throttles JS animation
+  frames — a backgrounded tab, certain embedded/iframed previews, etc.
+  Root cause: those two reveals were driven by raw GSAP tweens with a
+  fixed duration and no fallback; if the animation-frame loop ever
+  stalled mid-tween, the content was left at whatever opacity it had
+  reached and never recovered.
+- Fix: every reveal (hero, CTA, and the general scroll-reveal batch) now
+  works by toggling a CSS class, with the actual animation handled by a
+  CSS transition — compositor-driven and not dependent on a continuously
+  ticking JS loop, so it always resolves to its final state.
+- The hero's scroll-parallax no longer fades opacity down to 0.15 on a
+  small scroll (that read as the hero "losing color" even when working
+  as designed) — it now only does a subtle position drift.
+- Marquees now speed up on scroll by shortening the CSS animation's
+  duration, instead of replacing the CSS animation with a
+  requestAnimationFrame-driven loop — same reactive feel, but the actual
+  movement stays compositor-driven and can't freeze if JS is throttled.
+- Added timeout safety nets to the counting stats and the decode-text
+  reveal so neither can get permanently stuck mid-animation either.
+
+v1.1.0 — 2026-10-13
+--------------------
+- Hero 3D object replaced with a full-bleed, centered particle field —
+  structurally immune to the offset/alignment drift a positioned object
+  had at different viewport widths.
+- Custom cursor rebuilt as a single blend-mode circle with instant
+  tracking (previously a lagging dot-and-ring pair).
+- Added motion throughout, not just the hero: a top-of-page scroll
+  progress bar, a hero scroll-parallax, velocity-reactive marquees,
+  animated counting stats, a scroll-linked active-row spotlight through
+  Services, scale/dim on work cards as they pass the viewport center
+  during the pinned gallery, a decode/scramble text reveal on the About
+  pull-quote, a dedicated scale-in entrance for the CTA headline, and a
+  parallax wordmark + functional scroll-progress back-to-top ring in the
+  footer.
+- All additions degrade gracefully: most are plain scroll listeners
+  independent of GSAP, and everything GSAP-driven still respects
+  prefers-reduced-motion and the existing CDN-failure fallback.
+
+v1.0.0 — 2026-10-12
+--------------------
+- Initial release.
+- One-page site: hero, marquee, intro/stats, services, pinned horizontal
+  work gallery, about, testimonials, scroll-drawn process timeline, CTA
+  with contact form, footer.
+- Custom cursor, preloader, magnetic CTA button, scroll-reveal animation
+  (GSAP + ScrollTrigger), 3D hero object (Three.js).
+- Graceful degradation: page remains fully readable without animation if
+  the CDN libraries fail to load; respects prefers-reduced-motion.
+- Full documentation at documentation/documentation.html.

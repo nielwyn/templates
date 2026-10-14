@@ -1,0 +1,52 @@
+HALO — Branding & Web Studio Template
+Third-Party Assets & Usage Terms
+=======================================
+
+IMPORTANT: The terms under which a buyer may use this template (how many
+end products it may be used in, resale/redistribution rights, etc.) are
+set by the license type purchased through the marketplace listing (e.g.
+a "Standard" vs "Extended" license). This file documents the assets and
+third-party libraries bundled or loaded by the template — update the
+bracketed placeholder below before publishing.
+
+INCLUDED / LOADED ASSETS
+--------------------------
+1. Fonts — "Hanken Grotesk" and "Unbounded"
+   Source: Google Fonts (fonts.google.com)
+   License: SIL Open Font License 1.1 — free for commercial use, loaded
+   from Google's CDN, not bundled as files.
+
+2. GSAP 3.12.5 + ScrollTrigger plugin
+   Source: gsap.com, loaded via jsDelivr CDN (not bundled as files)
+   License: GSAP's standard license. GreenSock (acquired by Webflow) made
+   the full GSAP library, including all plugins, free to use as of 2024.
+   VERIFY THIS IS STILL CURRENT at gsap.com/licensing before relying on
+   it for a commercial project — license terms for third-party libraries
+   can change independently of this template.
+
+3. Three.js 0.134.0
+   Source: threejs.org, loaded via jsDelivr CDN (not bundled as files)
+   License: MIT License — free for commercial use, attribution
+   appreciated but not required.
+
+4. Graphics (gallery visuals, hero object, grain texture, icons)
+   Source: built entirely from CSS, inline SVG and Three.js primitive
+   geometry created for this template. No stock photography or icon
+   packs are bundled.
+
+5. Code (HTML, CSS, JavaScript)
+   Author: [seller name / shop name]
+   Licensed to buyers under the marketplace's standard license terms for
+   the license type purchased.
+
+AUTHOR NOTES FOR THE SELLER
+----------------------------
+- Replace "[seller name / shop name]" above before publishing.
+- Because GSAP and Three.js are loaded from a CDN rather than bundled as
+  files in the zip, this template is not "fully self-contained" the way
+  a plain HTML/CSS/JS template is — disclose this clearly in the listing
+  description so buyers aren't surprised it needs an internet connection
+  to preview and run.
+- If GSAP's licensing terms change in a way that affects commercial use,
+  update this file and the documentation accordingly, or swap the
+  animation approach to pure CSS/vanilla JS.

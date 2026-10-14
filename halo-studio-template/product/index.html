@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HALO — Branding &amp; Web Studio for Independent Businesses</title>
+<meta name="description" content="HALO is a bold, animated one-page template for branding studios, freelancers and small businesses — built with HTML, CSS, GSAP and Three.js.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Unbounded:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+<div class="scroll-progress"></div>
+<div class="grain"></div>
+<div class="cursor-blob"></div>
+
+<div class="preloader">
+  <div class="preloader-count"><span id="loadPercent">0</span>%</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand">HALO</a>
+    <div class="nav-links">
+      <a href="#work" data-cursor-hover>Work</a>
+      <a href="#services" data-cursor-hover>Services</a>
+      <a href="#about" data-cursor-hover>About</a>
+      <a href="#contact" data-cursor-hover>Contact</a>
+    </div>
+    <a href="#contact" class="btn btn-outline" data-cursor-hover>Start a project</a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="#work">Work</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<header id="top" class="hero">
+  <div class="hero-scene-fallback" aria-hidden="true"></div>
+  <div class="hero-scene" aria-hidden="true"><canvas id="heroCanvas"></canvas></div>
+  <div class="container hero-inner">
+    <p class="hero-eyebrow" data-hero-reveal>Branding &amp; Web Studio</p>
+    <h1 class="hero-title">
+      <span class="line"><span class="line-inner" data-reveal-line>Branding that</span></span>
+      <span class="line"><span class="line-inner accent" data-reveal-line>feels alive.</span></span>
+    </h1>
+    <p class="hero-lead" data-hero-reveal>We build brand identities and websites for small businesses who refuse to look small.</p>
+    <div class="hero-actions" data-hero-reveal>
+      <a href="#work" class="btn btn-primary" data-cursor-hover>See our work</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span></span>Scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Branding</span><span>Web Design</span><span>Motion</span><span>Strategy</span>
+    <span>Branding</span><span>Web Design</span><span>Motion</span><span>Strategy</span>
+  </div>
+</div>
+
+<section class="section intro">
+  <div class="container intro-grid">
+    <p class="intro-statement" data-reveal>HALO partners with independent shops, studios and small teams to build brands that punch above their size — from identity to the website that sells it.</p>
+    <div class="intro-stats">
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="120">120</span>+</span><span class="stat-label">Projects shipped</span></div>
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="8">8</span></span><span class="stat-label">Years running</span></div>
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="94">94</span>%</span><span class="stat-label">Clients who return</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section services">
+  <div class="container">
+    <h2 class="section-title" data-reveal>What we do</h2>
+    <div class="service-list">
+      <div class="service-row" data-reveal>
+        <span class="service-index">01</span>
+        <h3 class="service-name">Branding</h3>
+        <p class="service-desc">Identity systems built to work as hard on a coffee cup as on a billboard.</p>
+      </div>
+      <div class="service-row" data-reveal>
+        <span class="service-index">02</span>
+        <h3 class="service-name">Web Design</h3>
+        <p class="service-desc">Fast, distinctive websites that turn visitors into customers.</p>
+      </div>
+      <div class="service-row" data-reveal>
+        <span class="service-index">03</span>
+        <h3 class="service-name">Motion &amp; Animation</h3>
+        <p class="service-desc">Small, considered motion that makes a brand feel alive, not loud.</p>
+      </div>
+      <div class="service-row" data-reveal>
+        <span class="service-index">04</span>
+        <h3 class="service-name">Strategy</h3>
+        <p class="service-desc">Positioning and messaging that make the rest of the work easy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section work">
+  <div class="work-pin">
+    <h2 class="section-title work-heading" data-reveal>Selected work</h2>
+    <div class="work-track">
+      <div class="work-card" data-reveal>
+        <div class="work-visual" style="--c1:#ffc53d; --c2:#ff7a68;"></div>
+        <div class="work-meta"><h3>Marigold Coffee</h3><span>Branding — 2025</span></div>
+      </div>
+      <div class="work-card" data-reveal>
+        <div class="work-visual" style="--c1:#ff7a68; --c2:#a99cb5;"></div>
+        <div class="work-meta"><h3>Kindred Studio</h3><span>Web Design — 2025</span></div>
+      </div>
+      <div class="work-card" data-reveal>
+        <div class="work-visual" style="--c1:#a99cb5; --c2:#ffc53d;"></div>
+        <div class="work-meta"><h3>Nordlys Supply Co.</h3><span>Branding — 2024</span></div>
+      </div>
+      <div class="work-card" data-reveal>
+        <div class="work-visual" style="--c1:#ffc53d; --c2:#6e6279;"></div>
+        <div class="work-meta"><h3>Fieldstone Pottery</h3><span>Web Design — 2024</span></div>
+      </div>
+      <div class="work-card" data-reveal>
+        <div class="work-visual" style="--c1:#ff7a68; --c2:#ffc53d;"></div>
+        <div class="work-meta"><h3>Nocturne Records</h3><span>Branding &amp; Motion — 2023</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div class="container about-grid">
+    <div class="about-visual" aria-hidden="true"></div>
+    <div class="about-copy">
+      <h2 class="section-title" data-reveal>About the studio</h2>
+      <p class="pull-quote">"We started HALO because small businesses deserve the same craft as venture-backed ones — just without the bloat."</p>
+      <p data-reveal>Founded in 2018, HALO is a tiny studio by design: senior people, no handoffs, no bloated process — just the work.</p>
+      <div class="signature">— Founder, HALO</div>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials">
+  <div class="container">
+    <h2 class="section-title" data-reveal>Kind words</h2>
+  </div>
+  <div class="marquee marquee-cards" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="quote-card"><p>"HALO gave our tiny shop a brand that finally matches how good the coffee actually is."</p><div class="who">Marigold Coffee</div></div>
+      <div class="quote-card"><p>"They moved fast, asked the right questions, and never over-engineered anything."</p><div class="who">Kindred Studio</div></div>
+      <div class="quote-card"><p>"Our new site books more consults in a month than the old one did in a year."</p><div class="who">Nordlys Supply Co.</div></div>
+      <div class="quote-card"><p>"Felt like working with an in-house team, not an agency."</p><div class="who">Fieldstone Pottery</div></div>
+      <div class="quote-card"><p>"HALO gave our tiny shop a brand that finally matches how good the coffee actually is."</p><div class="who">Marigold Coffee</div></div>
+      <div class="quote-card"><p>"They moved fast, asked the right questions, and never over-engineered anything."</p><div class="who">Kindred Studio</div></div>
+      <div class="quote-card"><p>"Our new site books more consults in a month than the old one did in a year."</p><div class="who">Nordlys Supply Co.</div></div>
+      <div class="quote-card"><p>"Felt like working with an in-house team, not an agency."</p><div class="who">Fieldstone Pottery</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section process">
+  <div class="container">
+    <h2 class="section-title" data-reveal>How we work</h2>
+    <div class="timeline">
+      <svg class="timeline-line" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
+        <path class="track" d="M0 1 H1200"/>
+        <path class="fill" d="M0 1 H1200"/>
+      </svg>
+      <div class="timeline-step" data-reveal>
+        <span class="timeline-num">01</span>
+        <h3>Discover</h3>
+        <p>A short, focused conversation about where the business is and where it wants to go.</p>
+      </div>
+      <div class="timeline-step" data-reveal>
+        <span class="timeline-num">02</span>
+        <h3>Design</h3>
+        <p>Concepts built around what actually makes the business different.</p>
+      </div>
+      <div class="timeline-step" data-reveal>
+        <span class="timeline-num">03</span>
+        <h3>Build</h3>
+        <p>Identity and site assembled, tested and tightened until it's right.</p>
+      </div>
+      <div class="timeline-step" data-reveal>
+        <span class="timeline-num">04</span>
+        <h3>Launch</h3>
+        <p>Shipped, handed off, and supported after the fact — not abandoned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section cta">
+  <div class="container cta-inner">
+    <h2 class="cta-title" data-cta-reveal>Let's build<br>something<br><span class="accent">worth bragging about.</span></h2>
+    <a href="#contact" class="btn btn-primary" data-cursor-hover>Start a project →</a>
+    <form class="cta-form" data-demo-form data-reveal>
+      <div class="field"><input type="text" placeholder="Your name" required></div>
+      <div class="field"><input type="email" placeholder="Email address" required></div>
+      <div class="field"><textarea rows="3" placeholder="Tell us about the project"></textarea></div>
+      <button type="submit" class="btn btn-primary">Send</button>
+      <div class="form-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-giant-mark" aria-hidden="true"><span>HALO</span></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">HALO</div>
+    <div class="footer-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="documentation/documentation.html">Documentation</a>
+    </div>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <span>© <span data-year></span> HALO Studio. All rights reserved.</span>
+    <span>hello@halo.studio</span>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top" data-cursor-hover>
+  <svg viewBox="0 0 44 44" aria-hidden="true">
+    <circle class="track" cx="22" cy="22" r="19"/>
+    <circle class="fill" cx="22" cy="22" r="19"/>
+  </svg>
+  <span>&uarr;</span>
+</button>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+<script defer src="js/main.js"></script>
+<script defer src="js/scene.js"></script>
+<script defer src="js/animations.js"></script>
+</body>
+</html>
