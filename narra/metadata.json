@@ -1,0 +1,6 @@
+{
+  "name": "Narra — Boutique Sales Page Template",
+  "description": "An editorial, high-converting sales page template crafted for small businesses, creative studios, coaches, and personal brands.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

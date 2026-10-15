@@ -1,0 +1,15 @@
+========================================================================
+NARRA TEMPLATE — CHANGELOG
+========================================================================
+
+v1.2.0 (Current Release)
+- Initial release of the Narra Sales Page template
+- Added 10 high-conversion sales page blocks
+- Integrated 4-phase interactive curriculum roadmap tabs
+- Integrated interactive masterclass audio preview player with waveform
+- Added 3-step application modal with input validation
+- Implemented 4 curated colorway presets via :root CSS custom properties
+- Bundled full photography assets with zero broken image fallback containers
+- Updated typography pairing: Fraunces & Plus Jakarta Sans via Google Fonts
+
+========================================================================
