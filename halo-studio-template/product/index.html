@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HALO — Branding &amp; Web Studio for Independent Businesses</title>
-<meta name="description" content="HALO is a bold, animated one-page template for branding studios, freelancers and small businesses — built with HTML, CSS, GSAP and Three.js.">
+<meta name="description" content="HALO is a bold, kinetic web studio for independent businesses — crafted with Three.js 3D kinetic geometry, GSAP motion, and procedural design systems.">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,66 +17,142 @@
 <div class="grain"></div>
 <div class="cursor-blob"></div>
 
+<!-- Preloader -->
 <div class="preloader">
   <div class="preloader-count"><span id="loadPercent">0</span>%</div>
   <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
 </div>
 
+<!-- Navigation (Strict 3-Zone Contract: 1-line Brand · 5 Nav Links · 1 Primary Action) -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#top" class="brand">HALO</a>
+    <a href="#top" class="brand" data-cursor-hover>HALO</a>
     <div class="nav-links">
       <a href="#work" data-cursor-hover>Work</a>
       <a href="#services" data-cursor-hover>Services</a>
+      <a href="#lab" data-cursor-hover>Brand Lab</a>
+      <a href="#process" data-cursor-hover>Process</a>
       <a href="#about" data-cursor-hover>About</a>
-      <a href="#contact" data-cursor-hover>Contact</a>
     </div>
-    <a href="#contact" class="btn btn-outline" data-cursor-hover>Start a project</a>
-    <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-outline" data-cursor-hover>Start a project</a>
+      <button class="nav-toggle" aria-label="Toggle mobile menu"><span></span></button>
+    </div>
   </div>
 </nav>
+
 <div class="nav-mobile">
   <a href="#work">Work</a>
   <a href="#services">Services</a>
+  <a href="#lab">Brand Lab</a>
+  <a href="#process">Process</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
 </div>
 
+<!-- Hero Section with Ambient Fluid Canvas & Interactive Studio Stage Deck -->
 <header id="top" class="hero">
   <div class="hero-scene-fallback" aria-hidden="true"></div>
   <div class="hero-scene" aria-hidden="true"><canvas id="heroCanvas"></canvas></div>
-  <div class="container hero-inner">
-    <p class="hero-eyebrow" data-hero-reveal>Branding &amp; Web Studio</p>
-    <h1 class="hero-title">
-      <span class="line"><span class="line-inner" data-reveal-line>Branding that</span></span>
-      <span class="line"><span class="line-inner accent" data-reveal-line>feels alive.</span></span>
-    </h1>
-    <p class="hero-lead" data-hero-reveal>We build brand identities and websites for small businesses who refuse to look small.</p>
-    <div class="hero-actions" data-hero-reveal>
-      <a href="#work" class="btn btn-primary" data-cursor-hover>See our work</a>
+
+  <div class="container hero-layout">
+    <!-- Left Column: Studio Headline & Value Proposition -->
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-hero-reveal>Branding &amp; Web Studio &bull; Est. 2018</p>
+      <h1 class="hero-title">
+        <span class="line"><span class="line-inner" data-reveal-line>Branding that</span></span>
+        <span class="line"><span class="line-inner accent" data-reveal-line>feels alive.</span></span>
+      </h1>
+      <p class="hero-lead" data-hero-reveal>We build bespoke brand identities and fast, distinctive websites for independent businesses who refuse to look small.</p>
+      <div class="hero-actions" data-hero-reveal>
+        <a href="#work" class="btn btn-primary" data-cursor-hover>Explore Work &rarr;</a>
+        <a href="#lab" class="btn btn-outline" data-cursor-hover>Try Brand Lab</a>
+      </div>
+      <div class="hero-trust-strip" data-hero-reveal>
+        <span class="trust-badge">120+ Shipped Brands</span>
+        <span class="trust-sep">&bull;</span>
+        <span>Independent Studios &bull; DTC Brands &bull; Ateliers</span>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Perspective Studio Showcase Deck (Completely Unobstructed) -->
+    <div class="hero-stage" id="heroStage" data-hero-reveal>
+      <div class="stage-perspective-wrap" id="stageWrap">
+        <!-- Clean Kicker Header (No pills, no pulse dots) -->
+        <div class="stage-header-meta">
+          <span class="stage-meta-kicker">Flagship Showcase</span>
+          <span class="stage-meta-sep">&bull;</span>
+          <span class="stage-meta-year">Selected 2024&ndash;2025</span>
+        </div>
+
+        <!-- Main Interactive Featured Work Card (Unobstructed View, Click opens Case Study Modal) -->
+        <div class="stage-card" id="stageMainCard" data-project="marigold" data-cursor-hover>
+          <div class="stage-card-preview visual-marigold" id="stagePreview">
+            <div class="stage-art-top">
+              <span class="stage-category-label" id="stageCategory">Specialty Roasters</span>
+              <span class="stage-origin" id="stageOrigin">Portland, OR</span>
+            </div>
+            <div class="stage-art-center">
+              <div class="stage-emblem" id="stageEmblem">&#10022;</div>
+              <h3 class="stage-project-name" id="stageProjectName">Marigold Coffee</h3>
+              <p class="stage-project-sub" id="stageProjectSub">Identity System &amp; Packaging Architecture</p>
+              <div class="stage-spec-tagline" id="stageSpecTagline">Bergamot &bull; Honeycomb &bull; Altitude 1,950m</div>
+            </div>
+            <div class="stage-art-bottom">
+              <span class="stage-stat-tag" id="stageStatTag">+185% Wholesale Growth</span>
+              <span class="stage-cta-label">Inspect Case Study &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grounded Verification & Rating Strip (Cleanly Below the Card — Does NOT Block Card View) -->
+        <div class="stage-proof-strip">
+          <div class="stage-proof-item">
+            <span class="proof-star">&#9733; 5.0</span>
+            <span class="proof-text" id="stageClientRating">Verified Client Rating</span>
+          </div>
+          <span class="stage-proof-sep" aria-hidden="true">&bull;</span>
+          <div class="stage-proof-item">
+            <span class="proof-label">Scope:</span>
+            <span class="proof-val" id="stageDeliverables">Packaging &bull; Shopify &bull; 3D</span>
+          </div>
+        </div>
+
+        <!-- Segmented Control Bar to Switch Featured Showcase -->
+        <div class="stage-segmented-bar">
+          <span class="stage-segmented-label">Archive:</span>
+          <div class="stage-segmented-pills">
+            <button class="stage-switch-btn is-active" data-stage="marigold" data-cursor-hover>01. Marigold</button>
+            <button class="stage-switch-btn" data-stage="kindred" data-cursor-hover>02. Kindred</button>
+            <button class="stage-switch-btn" data-stage="nocturne" data-cursor-hover>03. Nocturne</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="scroll-cue"><span></span>Scroll</div>
 </header>
 
+<!-- Marquee Strip -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Branding</span><span>Web Design</span><span>Motion</span><span>Strategy</span>
-    <span>Branding</span><span>Web Design</span><span>Motion</span><span>Strategy</span>
+    <span>Branding</span><span>Web Architecture</span><span>Kinetic Motion</span><span>Design Systems</span><span>Creative Direction</span>
+    <span>Branding</span><span>Web Architecture</span><span>Kinetic Motion</span><span>Design Systems</span><span>Creative Direction</span>
   </div>
 </div>
 
+<!-- Intro & Stats -->
 <section class="section intro">
   <div class="container intro-grid">
-    <p class="intro-statement" data-reveal>HALO partners with independent shops, studios and small teams to build brands that punch above their size — from identity to the website that sells it.</p>
+    <p class="intro-statement" data-reveal>HALO partners with independent shops, studios, and ambitious founder-led teams to build brands that punch above their size — from tactile identity systems to high-performance websites that sell.</p>
     <div class="intro-stats">
-      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="120">120</span>+</span><span class="stat-label">Projects shipped</span></div>
-      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="8">8</span></span><span class="stat-label">Years running</span></div>
-      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="94">94</span>%</span><span class="stat-label">Clients who return</span></div>
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="120">120</span>+</span><span class="stat-label">Projects shipped worldwide</span></div>
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="8">8</span></span><span class="stat-label">Years of independent craft</span></div>
+      <div class="stat" data-reveal><span class="stat-value"><span class="count" data-count="94">94</span>%</span><span class="stat-label">Clients who return or refer</span></div>
     </div>
   </div>
 </section>
 
+<!-- Services Section -->
 <section id="services" class="section services">
   <div class="container">
     <h2 class="section-title" data-reveal>What we do</h2>
@@ -84,131 +160,666 @@
       <div class="service-row" data-reveal>
         <span class="service-index">01</span>
         <h3 class="service-name">Branding</h3>
-        <p class="service-desc">Identity systems built to work as hard on a coffee cup as on a billboard.</p>
+        <p class="service-desc">Complete visual identities engineered to work seamlessly from physical product packaging to 4K displays.</p>
       </div>
       <div class="service-row" data-reveal>
         <span class="service-index">02</span>
-        <h3 class="service-name">Web Design</h3>
-        <p class="service-desc">Fast, distinctive websites that turn visitors into customers.</p>
+        <h3 class="service-name">Web Architecture</h3>
+        <p class="service-desc">Ultra-fast, custom websites built with semantic engineering and zero generic boilerplate.</p>
       </div>
       <div class="service-row" data-reveal>
         <span class="service-index">03</span>
-        <h3 class="service-name">Motion &amp; Animation</h3>
-        <p class="service-desc">Small, considered motion that makes a brand feel alive, not loud.</p>
+        <h3 class="service-name">Kinetic Motion</h3>
+        <p class="service-desc">Considered GSAP &amp; WebGL physics that make your brand feel responsive, tactile, and unforgettable.</p>
       </div>
       <div class="service-row" data-reveal>
         <span class="service-index">04</span>
-        <h3 class="service-name">Strategy</h3>
-        <p class="service-desc">Positioning and messaging that make the rest of the work easy.</p>
+        <h3 class="service-name">Strategy &amp; Positioning</h3>
+        <p class="service-desc">Sharp positioning narratives and copy that differentiate you from competitors in saturated markets.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Brand Lab: Interactive Real-time Identity Simulator -->
+<section id="lab" class="section lab">
+  <div class="container">
+    <div class="lab-head" data-reveal>
+      <h2 class="section-title" style="margin-bottom: 16px;">Interactive Brand Lab</h2>
+      <p style="font-size: 18px; color: var(--ink-dim);">
+        Simulate your brand's aesthetic direction in real time before our discovery session. Test vibes, font treatments, and color harmonies:
+      </p>
+    </div>
+
+    <div class="lab-grid">
+      <!-- Controls -->
+      <div class="lab-controls" data-reveal>
+        <div>
+          <div class="lab-group-title">Aesthetic Direction</div>
+          <div class="lab-options-row">
+            <button class="lab-option lab-vibe-btn is-active" data-vibe="kinetic" data-cursor-hover>Bold &amp; Kinetic</button>
+            <button class="lab-option lab-vibe-btn" data-vibe="minimal" data-cursor-hover>Quiet Precision</button>
+            <button class="lab-option lab-vibe-btn" data-vibe="editorial" data-cursor-hover>Editorial Luxury</button>
+            <button class="lab-option lab-vibe-btn" data-vibe="brutalist" data-cursor-hover>Brutalist Studio</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="lab-group-title">Color Harmony</div>
+          <div class="lab-options-row">
+            <button class="lab-option lab-palette-btn is-active" data-palette="amber" data-cursor-hover>Sun &amp; Coral</button>
+            <button class="lab-option lab-palette-btn" data-palette="quartz" data-cursor-hover>Midnight Quartz</button>
+            <button class="lab-option lab-palette-btn" data-palette="clay" data-cursor-hover>Desert Clay</button>
+            <button class="lab-option lab-palette-btn" data-palette="mineral" data-cursor-hover>Mineral Teal</button>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" id="labApplyBtn" style="width: 100%;" data-cursor-hover>
+            Apply this Direction to Project Brief &darr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Interactive Brand Preview Card -->
+      <div class="lab-preview" data-reveal>
+        <div class="lab-preview-card" id="labPreviewCard">
+          <div class="lab-mark-wrap">
+            <div class="lab-mark" id="labMark"><span id="labMarkLetter">M</span></div>
+            <div class="lab-swatches" id="labColorSwatches"></div>
+          </div>
+          <div>
+            <div class="lab-specimen-title" id="labSpecimenTitle">MARIGOLD &amp; CO.</div>
+            <div class="lab-specimen-tagline" id="labSpecimenTagline">Bold &amp; Kinetic — Sun &amp; Coral</div>
+            <p class="lab-specimen-desc" id="labSpecimenDesc">
+              Bold geometric forms, high energy, and motion-first typography designed to stand out.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Selected Work (Independent Carousel Slider with Prev/Next Controls) -->
 <section id="work" class="section work">
-  <div class="work-pin">
-    <h2 class="section-title work-heading" data-reveal>Selected work</h2>
-    <div class="work-track">
-      <div class="work-card" data-reveal>
-        <div class="work-visual" style="--c1:#ffc53d; --c2:#ff7a68;"></div>
-        <div class="work-meta"><h3>Marigold Coffee</h3><span>Branding — 2025</span></div>
+  <div class="container">
+    <div class="work-header-row" data-reveal>
+      <div>
+        <h2 class="section-title" style="margin-bottom: 10px;">Selected work</h2>
+        <p class="work-sub">Independent browser controls — click buttons or select a project dot to browse flagship case studies.</p>
       </div>
-      <div class="work-card" data-reveal>
-        <div class="work-visual" style="--c1:#ff7a68; --c2:#a99cb5;"></div>
-        <div class="work-meta"><h3>Kindred Studio</h3><span>Web Design — 2025</span></div>
+      <div class="work-slider-controls">
+        <button class="slider-btn" id="workPrev" aria-label="Previous project" data-cursor-hover>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="slider-btn" id="workNext" aria-label="Next project" data-cursor-hover>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
       </div>
-      <div class="work-card" data-reveal>
-        <div class="work-visual" style="--c1:#a99cb5; --c2:#ffc53d;"></div>
-        <div class="work-meta"><h3>Nordlys Supply Co.</h3><span>Branding — 2024</span></div>
+    </div>
+  </div>
+
+  <div class="work-slider-wrap">
+    <div class="work-track" id="workTrack">
+      <!-- Card 1: Marigold Coffee (Artisanal Craft Packaging & Roastery) -->
+      <div class="work-card" data-project="marigold" data-cursor-hover>
+        <div class="work-visual visual-marigold">
+          <div class="card-art-header">
+            <span class="card-art-kicker">Lot 04 &bull; Ethiopia</span>
+            <div class="card-foil-stamp">&#10022; FOIL EMBOSSED 250G</div>
+          </div>
+          <div class="card-art-center">
+            <div class="pouch-label-frame">
+              <div class="pouch-sun-emblem">
+                <svg viewBox="0 0 44 44" fill="none" stroke="#ffc53d" stroke-width="1.8">
+                  <circle cx="22" cy="22" r="10" stroke-dasharray="2 2"/>
+                  <circle cx="22" cy="22" r="5" fill="#ffc53d" fill-opacity="0.3"/>
+                  <path d="M22 2v6M22 36v6M2 22h6M36 22h6M8 8l4.5 4.5M31.5 31.5L36 36M8 36l4.5-4.5M31.5 12.5L36 8"/>
+                </svg>
+              </div>
+              <div class="card-brand-display">MARIGOLD</div>
+              <div class="card-brand-sub">YIRGACHEFFE &bull; 2,150M ELEVATION</div>
+              <div class="tasting-notes-strip">
+                <span class="tasting-item">Bergamot</span>
+                <span class="note-sep">&bull;</span>
+                <span class="tasting-item">Wild Honey</span>
+                <span class="note-sep">&bull;</span>
+                <span class="tasting-item">Candied Citrus</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <div class="card-meta-line">
+              <span class="barcode-graphic">||||| ||| ||||| ||</span>
+              <span class="spec-text">Washed &bull; Direct Trade DTC</span>
+            </div>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Marigold Coffee</h3>
+          <span>Branding &bull; Packaging — 2025</span>
+        </div>
       </div>
-      <div class="work-card" data-reveal>
-        <div class="work-visual" style="--c1:#ffc53d; --c2:#6e6279;"></div>
-        <div class="work-meta"><h3>Fieldstone Pottery</h3><span>Web Design — 2024</span></div>
+
+      <!-- Card 2: Kindred Studio (Swiss CAD Window & Blueprint Grid) -->
+      <div class="work-card" data-project="kindred" data-cursor-hover>
+        <div class="work-visual visual-kindred">
+          <div class="blueprint-grid-overlay"></div>
+          <!-- Miniature Browser Chrome / CAD Viewport -->
+          <div class="cad-window-bar">
+            <div class="window-dots"><span></span><span></span><span></span></div>
+            <div class="window-url">kindred-spatial.ch &bull; Architectural CAD</div>
+            <span class="cad-coord">Sec 04-A</span>
+          </div>
+          <div class="card-art-center">
+            <div class="blueprint-composition">
+              <svg class="cad-svg" viewBox="0 0 220 90" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1">
+                <!-- Perimeter boundary -->
+                <rect x="10" y="8" width="200" height="74" stroke-dasharray="3 3"/>
+                <!-- Atrium / Spatial partitions -->
+                <rect x="25" y="20" width="75" height="50" stroke="#ff7a68" stroke-width="1.2"/>
+                <rect x="110" y="20" width="55" height="50"/>
+                <rect x="172" y="20" width="28" height="50"/>
+                <!-- Dimension lines -->
+                <line x1="25" y1="14" x2="100" y2="14" stroke="#ffc53d" stroke-width="0.8"/>
+                <text x="56" y="12" fill="#ffc53d" font-size="8" font-family="monospace">14.80m</text>
+                <!-- Central focus circle -->
+                <circle cx="62" cy="45" r="14" stroke="#ff7a68" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="62" y1="31" x2="62" y2="59" stroke="#ff7a68" stroke-width="0.8"/>
+                <line x1="48" y1="45" x2="76" y2="45" stroke="#ff7a68" stroke-width="0.8"/>
+              </svg>
+              <div class="card-brand-display" style="letter-spacing: -0.01em;">KINDRED</div>
+              <div class="card-brand-sub">SPATIAL PLATFORM &bull; STOCKHOLM &bull; LONDON</div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <div class="sys-status-badge">Architectural System &bull; Rev 04</div>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Kindred Studio</h3>
+          <span>Web Architecture — 2025</span>
+        </div>
       </div>
-      <div class="work-card" data-reveal>
-        <div class="work-visual" style="--c1:#ff7a68; --c2:#ffc53d;"></div>
-        <div class="work-meta"><h3>Nocturne Records</h3><span>Branding &amp; Motion — 2023</span></div>
+
+      <!-- Card 3: Nordlys Supply Co. (Arctic Technical Contour & Garment Spec) -->
+      <div class="work-card" data-project="nordlys" data-cursor-hover>
+        <div class="work-visual visual-nordlys">
+          <div class="ripstop-overlay"></div>
+          <div class="card-art-header">
+            <span class="card-art-kicker">Expedition Spec &bull; 2024</span>
+            <div class="pull-tag-strip">
+              <span class="gps-telemetry">68&deg;13'N &bull; -18&deg;C &bull; Troms&oslash;</span>
+            </div>
+          </div>
+          <div class="card-art-center">
+            <div class="topo-composition">
+              <svg class="topo-svg" viewBox="0 0 220 85" fill="none" stroke="rgba(169,156,181,0.5)" stroke-width="1">
+                <path d="M10 70 Q 60 20, 110 55 T 210 30"/>
+                <path d="M10 55 Q 60 10, 110 40 T 210 15" stroke="#a99cb5"/>
+                <path d="M10 40 Q 60 0, 110 25 T 210 5" stroke="#ffc53d" stroke-width="1.2"/>
+                <path d="M20 78 Q 70 30, 120 65 T 200 45"/>
+                <!-- Summit marker -->
+                <circle cx="110" cy="25" r="3" fill="#ff7a68"/>
+                <text x="118" y="27" fill="#ff7a68" font-size="8" font-family="monospace">&Delta; 1,842M</text>
+              </svg>
+              <div class="card-brand-display">NORDLYS SUPPLY</div>
+              <div class="card-brand-sub">SUB-ZERO APPAREL &bull; ARCTIC FIELD SYSTEMS</div>
+              <div class="gear-spec-strip">
+                <span>GORE-TEX PRO</span>
+                <span class="note-sep">&bull;</span>
+                <span>DYNEEMA 400D</span>
+                <span class="note-sep">&bull;</span>
+                <span>YKK AQUAGUARD</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <span class="batch-serial">Serial: NATO-NL-8420</span>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Nordlys Supply Co.</h3>
+          <span>Brand System — 2024</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Fieldstone Pottery (Tactile Handcrafted Stoneware & Ceramic Stamp) -->
+      <div class="work-card" data-project="fieldstone" data-cursor-hover>
+        <div class="work-visual visual-fieldstone">
+          <div class="stoneware-speckle"></div>
+          <div class="card-art-header">
+            <span class="card-art-kicker">Wood-Fired Kiln</span>
+            <span class="ceramics-chop">&#38518;&#33464; Studio Seal</span>
+          </div>
+          <div class="card-art-center">
+            <div class="ceramics-composition">
+              <!-- Concentric Wheel Throwing Lathe Rings & Vessel Silhouette -->
+              <svg class="vase-svg" viewBox="0 0 200 85" fill="none">
+                <circle cx="100" cy="42" r="38" stroke="#d4a373" stroke-width="0.8" stroke-dasharray="1 3"/>
+                <circle cx="100" cy="42" r="28" stroke="rgba(212,163,115,0.4)" stroke-width="0.8"/>
+                <circle cx="100" cy="42" r="18" stroke="rgba(212,163,115,0.25)" stroke-width="0.8"/>
+                <!-- Ceramic vessel shape -->
+                <path d="M85 70 C75 52, 75 35, 88 20 L112 20 C125 35, 125 52, 115 70 Z" stroke="#ffc53d" stroke-width="1.5" fill="rgba(212,163,115,0.12)"/>
+                <line x1="88" y1="20" x2="112" y2="20" stroke="#ffc53d" stroke-width="2"/>
+                <line x1="85" y1="70" x2="115" y2="70" stroke="#ffc53d" stroke-width="2"/>
+              </svg>
+              <div class="card-brand-display" style="font-family: Georgia, serif; letter-spacing: 0.02em;">Fieldstone</div>
+              <div class="card-brand-sub">HUDSON VALLEY &bull; STONEWARE ATELIER</div>
+              <!-- Glaze palette swatches -->
+              <div class="glaze-swatches-strip">
+                <span class="glaze-chip"><i style="background: #d4a373;"></i> Raw Ochre</span>
+                <span class="glaze-chip"><i style="background: #6e6279;"></i> Smoked Ash</span>
+                <span class="glaze-chip"><i style="background: #2b262d;"></i> Kiln Basalt</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <span class="spec-text">Limited Drop &bull; 48 Pieces Signed</span>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Fieldstone Pottery</h3>
+          <span>Web Experience — 2024</span>
+        </div>
+      </div>
+
+      <!-- Card 5: Nocturne Records (Vinyl Groove Sleeve & Kinetic Frequency Audio) -->
+      <div class="work-card" data-project="nocturne" data-cursor-hover>
+        <div class="work-visual visual-nocturne">
+          <div class="card-art-header">
+            <span class="card-art-kicker">180g Vinyl Press</span>
+            <span class="rpm-tag">33&#8531; RPM &bull; Stereo LP</span>
+          </div>
+          <div class="card-art-center">
+            <div class="vinyl-mock-wrapper">
+              <!-- Vinyl record sliding out from sleeve -->
+              <div class="vinyl-disc-interactive">
+                <div class="vinyl-groove-ring ring-1"></div>
+                <div class="vinyl-groove-ring ring-2"></div>
+                <div class="vinyl-groove-ring ring-3"></div>
+                <div class="vinyl-center-label">
+                  <span class="label-code">NOC-09</span>
+                  <div class="spindle-hole"></div>
+                </div>
+              </div>
+              <div class="card-brand-display" style="margin-top: 10px;">NOCTURNE</div>
+              <div class="card-brand-sub">ANALOG SOUND IDENTITY &bull; BERLIN</div>
+              <!-- Live Audio Equalizer Waveform -->
+              <div class="audio-spectrum-bar">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <span class="matrix-code">Matrix NOC-009-A &bull; Mastered 45kHz</span>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Nocturne Records</h3>
+          <span>Branding &amp; Motion — 2023</span>
+        </div>
+      </div>
+
+      <!-- Card 6: Aura Botanical (Apothecary Lab Tincture & Plant Cellular Matrix) -->
+      <div class="work-card" data-project="aura" data-cursor-hover>
+        <div class="work-visual visual-aura">
+          <div class="botanical-matrix-overlay"></div>
+          <div class="card-art-header">
+            <span class="card-art-kicker">Cellular Bio-Care</span>
+            <span class="apothecary-batch">Formulation AUR-889</span>
+          </div>
+          <div class="card-art-center">
+            <div class="botanical-composition">
+              <!-- Lab Flask & Cellular Vein Diagram -->
+              <svg class="dropper-svg" viewBox="0 0 180 80" fill="none">
+                <!-- Measurement tick flask -->
+                <path d="M90 12 C85 12, 82 18, 82 25 L84 56 C84 66, 96 66, 96 56 L98 25 C98 18, 95 12, 90 12 Z" stroke="#2dd4bf" stroke-width="1.4" fill="rgba(45,212,191,0.08)"/>
+                <line x1="80" y1="25" x2="100" y2="25" stroke="#2dd4bf" stroke-width="1.5"/>
+                <line x1="84" y1="36" x2="92" y2="36" stroke="#2dd4bf" stroke-width="1"/>
+                <line x1="84" y1="44" x2="94" y2="44" stroke="#2dd4bf" stroke-width="1"/>
+                <circle cx="90" cy="72" r="3.5" fill="#2dd4bf"/>
+                <!-- Bio-cellular node connections -->
+                <circle cx="50" cy="40" r="4" stroke="#6ee7b7" stroke-width="1"/>
+                <circle cx="130" cy="40" r="4" stroke="#6ee7b7" stroke-width="1"/>
+                <line x1="54" y1="40" x2="80" y2="40" stroke="#6ee7b7" stroke-width="0.8" stroke-dasharray="2 2"/>
+                <line x1="100" y1="40" x2="126" y2="40" stroke="#6ee7b7" stroke-width="0.8" stroke-dasharray="2 2"/>
+              </svg>
+              <div class="card-brand-display">AURA BOTANICAL</div>
+              <div class="card-brand-sub">SCANDINAVIAN CELLULAR FORMULATION</div>
+              <div class="formula-strip">
+                <span>Niacinamide 5%</span>
+                <span class="note-sep">&bull;</span>
+                <span>Squalane 12%</span>
+                <span class="note-sep">&bull;</span>
+                <span>pH 5.4 Active</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-art-footer">
+            <span class="spec-text">Eco-Certified &bull; 100% Vegan Formulation</span>
+            <span class="inspect-cue">Case Study &rarr;</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <h3>Aura Botanical</h3>
+          <span>Identity &amp; E-Commerce — 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Pagination Dots & Interactive Browsing Bar -->
+    <div class="work-slider-footer">
+      <div class="work-dots" id="workDots"></div>
+      <div class="work-slider-guide">
+        <span class="guide-nav-tip">Use &larr; &rarr; buttons or the dots to explore all 6 flagship projects</span>
       </div>
     </div>
   </div>
 </section>
 
+<!-- About the Studio -->
 <section id="about" class="section about">
   <div class="container about-grid">
-    <div class="about-visual" aria-hidden="true"></div>
+    <div class="about-visual" aria-hidden="true" data-reveal>
+      <div class="about-mark">HALO</div>
+    </div>
     <div class="about-copy">
       <h2 class="section-title" data-reveal>About the studio</h2>
-      <p class="pull-quote">"We started HALO because small businesses deserve the same craft as venture-backed ones — just without the bloat."</p>
-      <p data-reveal>Founded in 2018, HALO is a tiny studio by design: senior people, no handoffs, no bloated process — just the work.</p>
-      <div class="signature">— Founder, HALO</div>
+      <p class="pull-quote">"We started HALO because independent businesses deserve the same craft as venture-backed giants — just without the bloat, jargon, and endless handoffs."</p>
+      <p data-reveal>Founded in 2018, HALO is a deliberate boutique studio. We work directly with founders and creative leaders from concept to deployment. No account managers, no junior handoffs — just focused, senior craft that makes your brand unforgettable.</p>
+      <div class="signature">— Founder &amp; Creative Director, HALO Studio</div>
     </div>
   </div>
 </section>
 
+<!-- Testimonials Marquee -->
 <section class="section testimonials">
   <div class="container">
     <h2 class="section-title" data-reveal>Kind words</h2>
   </div>
   <div class="marquee marquee-cards" aria-hidden="true">
     <div class="marquee-track">
-      <div class="quote-card"><p>"HALO gave our tiny shop a brand that finally matches how good the coffee actually is."</p><div class="who">Marigold Coffee</div></div>
-      <div class="quote-card"><p>"They moved fast, asked the right questions, and never over-engineered anything."</p><div class="who">Kindred Studio</div></div>
-      <div class="quote-card"><p>"Our new site books more consults in a month than the old one did in a year."</p><div class="who">Nordlys Supply Co.</div></div>
-      <div class="quote-card"><p>"Felt like working with an in-house team, not an agency."</p><div class="who">Fieldstone Pottery</div></div>
-      <div class="quote-card"><p>"HALO gave our tiny shop a brand that finally matches how good the coffee actually is."</p><div class="who">Marigold Coffee</div></div>
-      <div class="quote-card"><p>"They moved fast, asked the right questions, and never over-engineered anything."</p><div class="who">Kindred Studio</div></div>
-      <div class="quote-card"><p>"Our new site books more consults in a month than the old one did in a year."</p><div class="who">Nordlys Supply Co.</div></div>
-      <div class="quote-card"><p>"Felt like working with an in-house team, not an agency."</p><div class="who">Fieldstone Pottery</div></div>
+      <div class="quote-card"><p>"HALO gave our tiny shop a brand that finally matches how good the coffee actually is."</p><div class="who">Marigold Coffee &bull; Portland</div></div>
+      <div class="quote-card"><p>"They moved fast, asked the right questions, and never over-engineered anything."</p><div class="who">Kindred Studio &bull; London</div></div>
+      <div class="quote-card"><p>"Our new site books more consults in a month than the old one did in a whole year."</p><div class="who">Nordlys Supply Co. &bull; Tromsø</div></div>
+      <div class="quote-card"><p>"Felt like working with an in-house team, not an agency."</p><div class="who">Fieldstone Pottery &bull; Hudson Valley</div></div>
+      <div class="quote-card"><p>"HALO captured the raw, tactile soul of vinyl in a completely modern digital language."</p><div class="who">Nocturne Records &bull; Berlin</div></div>
     </div>
   </div>
 </section>
 
-<section class="section process">
+<!-- Interactive Process Section -->
+<section id="process" class="section process">
   <div class="container">
     <h2 class="section-title" data-reveal>How we work</h2>
-    <div class="timeline">
+    <p style="margin-top: -32px; margin-bottom: 32px; color: var(--ink-faint);" data-reveal>Click any phase to inspect deliverables, timelines, and collaboration rhythms.</p>
+
+    <div class="timeline" data-reveal>
       <svg class="timeline-line" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
         <path class="track" d="M0 1 H1200"/>
         <path class="fill" d="M0 1 H1200"/>
       </svg>
-      <div class="timeline-step" data-reveal>
+      <div class="timeline-step is-selected" data-step="0" data-cursor-hover>
         <span class="timeline-num">01</span>
         <h3>Discover</h3>
-        <p>A short, focused conversation about where the business is and where it wants to go.</p>
+        <p>Immersion into business economics &amp; audience positioning.</p>
       </div>
-      <div class="timeline-step" data-reveal>
+      <div class="timeline-step" data-step="1" data-cursor-hover>
         <span class="timeline-num">02</span>
         <h3>Design</h3>
-        <p>Concepts built around what actually makes the business different.</p>
+        <p>Distinctive identity systems &amp; interactive prototypes.</p>
       </div>
-      <div class="timeline-step" data-reveal>
+      <div class="timeline-step" data-step="2" data-cursor-hover>
         <span class="timeline-num">03</span>
         <h3>Build</h3>
-        <p>Identity and site assembled, tested and tightened until it's right.</p>
+        <p>Production engineering with semantic code &amp; considered motion.</p>
       </div>
-      <div class="timeline-step" data-reveal>
+      <div class="timeline-step" data-step="3" data-cursor-hover>
         <span class="timeline-num">04</span>
         <h3>Launch</h3>
-        <p>Shipped, handed off, and supported after the fact — not abandoned.</p>
+        <p>Deployment, brand guidelines Figma kit, and post-launch support.</p>
       </div>
     </div>
+
+    <!-- Active Step Detail Drawer -->
+    <div id="processDetail" data-reveal></div>
   </div>
 </section>
 
+<!-- CTA & Interactive Project Scope Estimator -->
 <section id="contact" class="section cta">
   <div class="container cta-inner">
     <h2 class="cta-title" data-cta-reveal>Let's build<br>something<br><span class="accent">worth bragging about.</span></h2>
-    <a href="#contact" class="btn btn-primary" data-cursor-hover>Start a project →</a>
+
+    <!-- Interactive Scope Estimator -->
+    <div class="estimator-box" data-reveal>
+      <div class="estimator-title">1. Configure Your Estimated Project Scope:</div>
+      
+      <div class="lab-group-title">Services Needed</div>
+      <div class="chips-group">
+        <button class="chip scope-chip is-active" data-scope="Brand Identity" data-cursor-hover>Brand Identity</button>
+        <button class="chip scope-chip is-active" data-scope="Custom Website" data-cursor-hover>Custom Website</button>
+        <button class="chip scope-chip" data-scope="3D Motion &amp; WebGL" data-cursor-hover>3D Motion &amp; WebGL</button>
+        <button class="chip scope-chip" data-scope="Packaging &amp; Print" data-cursor-hover>Packaging &amp; Print</button>
+        <button class="chip scope-chip" data-scope="Design System" data-cursor-hover>Design System</button>
+      </div>
+
+      <div class="lab-group-title">Target Launch Window</div>
+      <div class="chips-group">
+        <button class="chip timeline-chip" data-timeline="Accelerated (3–4 weeks)" data-cursor-hover>Accelerated (3–4 wks)</button>
+        <button class="chip timeline-chip is-active" data-timeline="Standard (6–8 weeks)" data-cursor-hover>Standard (6–8 wks)</button>
+        <button class="chip timeline-chip" data-timeline="Quarterly Retainer" data-cursor-hover>Quarterly Retainer</button>
+      </div>
+
+      <div class="estimator-calc">
+        <div class="calc-row">
+          <span>Active Scope</span>
+          <span id="estimatorSummary">Brand Identity + Custom Website</span>
+        </div>
+        <div class="calc-row">
+          <span>Pacing</span>
+          <span id="estimatorTimeline">Standard (6–8 weeks)</span>
+        </div>
+        <div class="calc-row">
+          <span>Team Allocation</span>
+          <span id="estimatorTeam">Studio Principal + Senior Engineer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brief Submission Form -->
     <form class="cta-form" data-demo-form data-reveal>
-      <div class="field"><input type="text" placeholder="Your name" required></div>
+      <div class="field"><input type="text" placeholder="Your name / studio" required></div>
       <div class="field"><input type="email" placeholder="Email address" required></div>
-      <div class="field"><textarea rows="3" placeholder="Tell us about the project"></textarea></div>
-      <button type="submit" class="btn btn-primary">Send</button>
+      <div class="field"><textarea rows="3" id="contactMsg" placeholder="Tell us about the project and goals"></textarea></div>
+      <button type="submit" class="btn btn-primary" style="padding: 16px 32px;" data-cursor-hover>Send Project Brief &rarr;</button>
       <div class="form-status"></div>
     </form>
   </div>
 </section>
 
+<!-- Case Study Interactive Editorial Modal (Magazine-Grade Architecture) -->
+<div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-dialog">
+    <!-- Top Action Bar -->
+    <div class="modal-top-bar">
+      <div class="modal-breadcrumbs">
+        <span class="modal-kicker-tag" id="modalKicker">Case Study Archive</span>
+        <span class="modal-kicker-sep">/</span>
+        <span class="modal-category" id="modalCategory">Brand Identity &amp; Packaging — 2025</span>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close case study dialog" data-cursor-hover>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Body: everything below the fixed top bar -->
+    <div class="modal-scroll-body">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle">Marigold Coffee</h3>
+      <p class="modal-subtitle" id="modalSubtitle">Transforming an artisanal roaster into a category-defining national specialty brand.</p>
+      
+      <!-- Key Metadata Strip -->
+      <div class="modal-meta-strip">
+        <div class="modal-meta-col">
+          <span class="modal-meta-lbl">Client</span>
+          <span class="modal-meta-val" id="modalClient">Marigold Specialty Roasters</span>
+        </div>
+        <div class="modal-meta-col">
+          <span class="modal-meta-lbl">Industry</span>
+          <span class="modal-meta-val" id="modalIndustry">Specialty Food &amp; Retail</span>
+        </div>
+        <div class="modal-meta-col">
+          <span class="modal-meta-lbl">Timeline</span>
+          <span class="modal-meta-val" id="modalTimeline">10 Weeks</span>
+        </div>
+        <div class="modal-meta-col">
+          <span class="modal-meta-lbl">Scope</span>
+          <span class="modal-meta-val" id="modalScope">Brand, Packaging, Shopify</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Hero Visual Showcase Container -->
+    <div class="modal-hero-art" id="modalHeroArt">
+      <!-- Injected dynamically per project: high fidelity artwork, badges, blueprints -->
+    </div>
+
+    <!-- Executive Impact Metrics Grid (3 cards) -->
+    <div class="modal-kpi-grid" id="modalKpiGrid">
+      <!-- 3 Impact KPI cards populated dynamically -->
+    </div>
+
+    <!-- Interactive Section Tabs Navigation -->
+    <div class="modal-tabs-nav" role="tablist">
+      <button class="modal-tab-btn is-active" data-tab="strategy" role="tab" aria-selected="true" data-cursor-hover>
+        <span class="tab-idx">01</span>
+        <span>Strategic Solution</span>
+      </button>
+      <button class="modal-tab-btn" data-tab="system" role="tab" aria-selected="false" data-cursor-hover>
+        <span class="tab-idx">02</span>
+        <span>Design System &amp; Specs</span>
+      </button>
+      <button class="modal-tab-btn" data-tab="deliverables" role="tab" aria-selected="false" data-cursor-hover>
+        <span class="tab-idx">03</span>
+        <span>Deliverables &amp; Tech</span>
+      </button>
+      <button class="modal-tab-btn" data-tab="review" role="tab" aria-selected="false" data-cursor-hover>
+        <span class="tab-idx">04</span>
+        <span>Client Review</span>
+      </button>
+    </div>
+
+    <!-- Tab Panels Container -->
+    <div class="modal-tab-content">
+      <!-- Tab 1: Strategy & Solution -->
+      <div class="modal-tab-panel is-active" id="tabPanelStrategy" role="tabpanel">
+        <div class="modal-split-grid">
+          <div class="modal-text-block">
+            <h4 class="modal-section-eyebrow">The Challenge</h4>
+            <p id="modalChallenge" class="modal-prose"></p>
+          </div>
+          <div class="modal-text-block">
+            <h4 class="modal-section-eyebrow">Creative Thesis &amp; Strategy</h4>
+            <p id="modalSolution" class="modal-prose"></p>
+          </div>
+        </div>
+        <div class="modal-moves-box">
+          <h4 class="modal-section-eyebrow">Key Strategic Moves</h4>
+          <div class="modal-moves-list" id="modalMovesList">
+            <!-- Dynamic strategic move cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Design System & Tokens -->
+      <div class="modal-tab-panel" id="tabPanelSystem" role="tabpanel">
+        <div class="modal-spec-block">
+          <div class="modal-spec-head">
+            <h4 class="modal-section-eyebrow">Color Palette Architecture</h4>
+            <span class="modal-spec-hint">Click any hex code to copy to clipboard</span>
+          </div>
+          <div class="modal-palette" id="modalPalette"></div>
+        </div>
+
+        <div class="modal-spec-split">
+          <div class="modal-spec-col">
+            <h4 class="modal-section-eyebrow">Typography Hierarchy</h4>
+            <div class="modal-type-spec" id="modalTypeSpec"></div>
+          </div>
+          <div class="modal-spec-col">
+            <h4 class="modal-section-eyebrow">Material &amp; Production Specs</h4>
+            <div class="modal-mat-spec" id="modalMatSpec"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Deliverables & Tech Stack -->
+      <div class="modal-tab-panel" id="tabPanelDeliverables" role="tabpanel">
+        <div class="modal-spec-block">
+          <h4 class="modal-section-eyebrow">Categorized Deliverables</h4>
+          <div class="modal-grouped-deliverables" id="modalGroupedDeliverables"></div>
+        </div>
+        <div class="modal-spec-block">
+          <h4 class="modal-section-eyebrow">Engineered Tech Stack &amp; Standards</h4>
+          <div class="modal-tech-stack" id="modalTechStack"></div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Client Review -->
+      <div class="modal-tab-panel" id="tabPanelReview" role="tabpanel">
+        <div class="modal-review-card">
+          <div class="modal-review-header">
+            <div class="modal-avatar" id="modalAvatar">MV</div>
+            <div class="modal-reviewer-meta">
+              <div class="reviewer-name" id="modalAuthor">Marcus Vance</div>
+              <div class="reviewer-role" id="modalReviewerRole">Head Roaster &amp; Co-Founder</div>
+              <div class="reviewer-company" id="modalReviewerCompany">Marigold Specialty Roasters</div>
+            </div>
+            <div class="modal-rating-badge">
+              <span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="rating-text">Verified Client Review</span>
+            </div>
+          </div>
+          <blockquote class="modal-extended-quote" id="modalQuote">
+            "HALO gave our tiny shop a brand that finally matches how good the coffee actually is."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer Controls: Prev/Next Project Switcher + Inquire Action -->
+    <div class="modal-footer-nav">
+      <div class="modal-cycle-controls">
+        <button class="modal-nav-cycle-btn" id="modalPrevBtn" aria-label="Previous case study" data-cursor-hover>
+          &larr; <span id="modalPrevLabel">Previous Project</span>
+        </button>
+        <span class="modal-cycle-counter" id="modalCycleCounter">01 / 06</span>
+        <button class="modal-nav-cycle-btn" id="modalNextBtn" aria-label="Next case study" data-cursor-hover>
+          <span id="modalNextLabel">Next Project</span> &rarr;
+        </button>
+      </div>
+      <div class="modal-inquire-wrap">
+        <button class="modal-inquire-btn" id="modalInquireBtn" data-cursor-hover>
+          <span>Inquire About Similar Scope</span> &rarr;
+        </button>
+      </div>
+    </div>
+    </div>
+    <!-- /.modal-scroll-body -->
+  </div>
+</div>
+
+<!-- Footer -->
 <footer class="footer">
   <div class="footer-giant-mark" aria-hidden="true"><span>HALO</span></div>
   <div class="container footer-grid">
@@ -216,6 +827,8 @@
     <div class="footer-links">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
+      <a href="#lab">Brand Lab</a>
+      <a href="#process">Process</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="documentation/documentation.html">Documentation</a>
@@ -227,11 +840,12 @@
     </div>
   </div>
   <div class="footer-bottom container">
-    <span>© <span data-year></span> HALO Studio. All rights reserved.</span>
+    <span>&copy; <span data-year></span> HALO Studio. Built with Three.js, GSAP &amp; semantic web standards.</span>
     <span>hello@halo.studio</span>
   </div>
 </footer>
 
+<!-- Back to Top Indicator -->
 <button class="back-to-top" aria-label="Back to top" data-cursor-hover>
   <svg viewBox="0 0 44 44" aria-hidden="true">
     <circle class="track" cx="22" cy="22" r="19"/>

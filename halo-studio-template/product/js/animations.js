@@ -82,40 +82,6 @@
     });
   });
 
-  /* ---------- Work gallery: pin + scrub vertical scroll into horizontal motion,
-     cards nearest the viewport center scale up and sharpen ---------- */
-  ScrollTrigger.matchMedia({
-    '(min-width: 901px)': function () {
-      var track = document.querySelector('.work-track');
-      var pin = document.querySelector('.work-pin');
-      if (!track || !pin) return;
-      var cards = track.querySelectorAll('.work-card');
-      var distance = function () { return track.scrollWidth - pin.clientWidth; };
-      gsap.to(track, {
-        x: function () { return -distance(); },
-        ease: 'none',
-        onUpdate: function () {
-          var center = window.innerWidth / 2;
-          cards.forEach(function (card) {
-            var rect = card.getBoundingClientRect();
-            var dist = Math.abs(rect.left + rect.width / 2 - center);
-            var norm = Math.min(dist / center, 1);
-            card.style.transform = 'scale(' + (1 - norm * 0.12) + ')';
-            card.style.opacity = 1 - norm * 0.45;
-          });
-        },
-        scrollTrigger: {
-          trigger: pin,
-          start: 'top top',
-          end: function () { return '+=' + distance(); },
-          scrub: true,
-          pin: true,
-          invalidateOnRefresh: true
-        }
-      });
-    }
-  });
-
   /* ---------- About: the pull-quote decodes into place instead of a plain fade ---------- */
   function decodeText(el) {
     var original = el.textContent;
@@ -151,23 +117,6 @@
     ScrollTrigger.create({
       trigger: pullQuote, start: 'top 80%', once: true,
       onEnter: function () { decodeText(pullQuote); }
-    });
-  }
-
-  /* ---------- Testimonials & process timeline: draw the connecting line as you scroll through it ---------- */
-  var fillPath = document.querySelector('.timeline-line path.fill');
-  if (fillPath) {
-    var len = fillPath.getTotalLength();
-    gsap.set(fillPath, { strokeDasharray: len, strokeDashoffset: len });
-    gsap.to(fillPath, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.timeline',
-        start: 'top 70%',
-        end: 'bottom 60%',
-        scrub: true
-      }
     });
   }
 
