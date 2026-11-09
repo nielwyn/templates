@@ -14,6 +14,43 @@ halo-studio-template/
 
 Live demo: https://claude.ai/artifact/5hpnjhtVmuWxnHFGxvgAo2
 
+## Status (2026-11-08): v1.1.6 packaged and verified
+
+The stale-zip problem is cleared. `halo-studio-template-v1.1.6.zip` was built
+from the current `product/` and verified clean:
+
+```
+unzip -q -o halo-studio-template-v1.1.6.zip -d /tmp/zipcheck && \
+  diff -rq product/ /tmp/zipcheck/halo-studio-template/
+```
+
+The stale `v1.1.5.zip` was deleted rather than kept alongside — two zips in the
+folder is how the wrong one gets uploaded.
+
+What went into v1.1.6 beyond re-zipping:
+
+- `CHANGELOG.txt` now has a v1.1.6 entry covering the hero showcase deck, the
+  case-study modal, Brand Lab, Process, the scope estimator and the carousel
+  change.
+- `documentation/documentation.html` gained an "Interactive sections" chapter
+  documenting every new section and its `data-*` hooks, and the forms section
+  is now self-contained (it previously told the buyer to go read Launchly's
+  documentation, which they don't have).
+- Removed docs claims that the rebuild had made false: the scroll-progress bar
+  and back-to-top ring no longer exist, the work gallery is no longer a
+  GSAP-pinned horizontal scroller, there is no scroll-drawn timeline, and the
+  tilt effect is hero-only — the work cards don't tilt.
+- `README.txt`'s file inventory and a new "What's interactive" block match the
+  shipped JS.
+
+Still to do before listing: capture screenshots from the rebuilt page (the
+live demo link above predates the rebuild too — re-publish it), and verify the
+interactive states in a real browser.
+
+Everything else in the template holds up — the CDN libraries are version-pinned,
+`scene.js`/`animations.js` both no-op cleanly when THREE/GSAP are missing, the
+`.no-js` CSS force-reveals content, and reduced-motion is respected throughout.
+
 ## How this product differs from Launchly
 
 Launchly (the SaaS landing page template) is fully dependency-free —
@@ -58,9 +95,11 @@ scroll-driven animation, built on plain HTML/CSS/JS.
 
 ## Before you publish
 
+- [x] Clear the stale-zip status above (changelog entry, docs update, re-zip, diff check) — done 2026-11-08, v1.1.6
 - [ ] Replace `[seller name / shop name]` in `product/LICENSE.txt`
 - [ ] Verify GSAP's current license terms at gsap.com/licensing
-- [ ] Re-zip if you edit anything in `product/`
+- [ ] Consider moving Three.js off r134 (2021) or saying in the listing which version is
+      loaded, so buyers know what they're pinning to
 - [ ] Capture listing screenshots from the live demo link above — this
   template especially benefits from a short screen-recording/GIF since
   the pinned gallery and 3D object are hard to sell with static images

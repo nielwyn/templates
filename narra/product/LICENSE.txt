@@ -1,0 +1,68 @@
+========================================================================
+NARRA — BUNDLED ASSET LICENSES & ATTRIBUTION
+Version 1.2.0
+========================================================================
+
+This file documents the third-party assets bundled with this template
+and the licenses they are redistributed under. It does NOT set out your
+usage rights as the buyer — those are defined by the license tier you
+purchased on the marketplace listing.
+
+------------------------------------------------------------------------
+TEMPLATE CODE
+------------------------------------------------------------------------
+
+All HTML, CSS, TypeScript/React source and inline SVG icons in this
+template were written for this product by [seller name / shop name].
+No third-party icon library or UI kit is bundled.
+
+------------------------------------------------------------------------
+FONTS — NOT BUNDLED
+------------------------------------------------------------------------
+
+  Fraunces            SIL Open Font License 1.1
+  Plus Jakarta Sans   SIL Open Font License 1.1
+
+Both are loaded at runtime from Google Fonts via <link> and are not
+redistributed inside this package. The SIL OFL permits commercial use.
+
+  https://fonts.google.com/specimen/Fraunces
+  https://fonts.google.com/specimen/Plus+Jakarta+Sans
+
+------------------------------------------------------------------------
+IMAGES — AI-GENERATED, BUNDLED
+------------------------------------------------------------------------
+
+The four photographs in this template are AI-generated images, created
+for this template as demonstration placeholders. They do not depict real
+people, places or businesses.
+
+  hero_editorial_founder_1792059117016.jpg
+  mentor_clara_portrait_1792059117422.jpg
+  editorial_case_study_studio_1792059117770.jpg
+  workspace_workshop_atmosphere_1792059117830.jpg
+
+They are provided so the template previews as designed. Replace them
+with your own photography before launching a real site — a sales page
+whose portrait is not the actual person it names misleads your visitors.
+
+------------------------------------------------------------------------
+DEMONSTRATION CONTENT
+------------------------------------------------------------------------
+
+All names, testimonials, case-study figures, prices and copy in this
+template ("Clara", the mentorship programme, revenue numbers, client
+results) are fictional demonstration content. Replace all of it before
+publishing. Do not present any of these figures or testimonials as your
+own results.
+
+------------------------------------------------------------------------
+BUILD DEPENDENCIES — NOT REDISTRIBUTED
+------------------------------------------------------------------------
+
+source/ declares React, Vite, Tailwind CSS and TypeScript as npm
+dependencies. They are downloaded by npm install from the public npm
+registry under their own licenses (MIT / Apache-2.0) and no copy of them
+is included in this package.
+
+========================================================================

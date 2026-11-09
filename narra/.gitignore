@@ -1,8 +1,11 @@
 node_modules/
-build/
-dist/
 coverage/
 .DS_Store
 *.log
-.env*
-!.env.example
+.env
+.env.local
+.env.*.local
+
+# Build output inside the buyer's source project. The shipped build lives in
+# product/dist/ and IS committed — it is the primary deliverable.
+product/source/dist/

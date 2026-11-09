@@ -54,6 +54,7 @@
     <a href="#included">What's included</a>
     <a href="#getting-started">Getting started</a>
     <a href="#dependencies">Dependencies (important)</a>
+    <a href="#interactive">Interactive sections</a>
     <a href="#structure">Folder structure</a>
     <a href="#customize">Customization</a>
     <a href="#performance">Performance &amp; a11y</a>
@@ -72,8 +73,8 @@
     <ul>
       <li><code>index.html</code> — the full one-page site</li>
       <li><code>css/style.css</code> — the entire design system (dark theme, CSS variables)</li>
-      <li><code>js/main.js</code> — cursor, preloader, mobile nav, magnetic button, demo form, scroll-progress bar, back-to-top ring, graceful fallback if the CDN libraries fail to load</li>
-      <li><code>js/animations.js</code> — GSAP/ScrollTrigger: hero scroll-parallax, scroll reveals, counting stats, the Services active-row spotlight, the pinned horizontal work gallery (with cards that scale as they pass center), the About pull-quote's decode-text reveal, the scroll-drawn timeline, the CTA's scale-in entrance, the footer's parallax wordmark</li>
+      <li><code>js/main.js</code> — preloader, custom momentum cursor, mobile nav, hero showcase deck, case-study modal, Brand Lab, work carousel, process stepper, scope estimator, hero deck tilt, demo form and toasts, graceful fallback if the CDN libraries fail to load. Each feature is its own numbered, commented block; the file header lists them.</li>
+      <li><code>js/animations.js</code> — GSAP/ScrollTrigger: the hero intro (fires when the preloader finishes), hero scroll-parallax, scroll reveals, counting stats, the Services active-row spotlight, the About pull-quote's decode-text reveal, the CTA's scale-in entrance, the footer's parallax wordmark</li>
       <li><code>js/scene.js</code> — the Three.js hero particle field</li>
       <li><code>images/favicon.svg</code></li>
       <li><code>documentation/documentation.html</code> — this guide</li>
@@ -94,12 +95,40 @@ python3 -m http.server 8080</code></pre>
     <table class="docs-table">
       <thead><tr><th>Library</th><th>Used for</th><th>Loaded from</th></tr></thead>
       <tbody>
-        <tr><td>GSAP 3.12.5 + ScrollTrigger</td><td>Scroll reveals, pinned horizontal gallery, scroll-drawn timeline, hero intro</td><td>jsDelivr CDN</td></tr>
+        <tr><td>GSAP 3.12.5 + ScrollTrigger</td><td>Hero intro and scroll-parallax, scroll reveals, counting stats, the Services spotlight, the decode-text pull-quote, the footer wordmark</td><td>jsDelivr CDN</td></tr>
         <tr><td>Three.js 0.134.0</td><td>The rotating hero object</td><td>jsDelivr CDN</td></tr>
       </tbody>
     </table>
     <p>Both are loaded with pinned version numbers so the site won't silently break from an upstream update. If you'd rather self-host them, download the same files and point the <code>&lt;script src&gt;</code> tags in <code>index.html</code> at your own copies.</p>
     <p>The page is built to degrade gracefully: if either library fails to load (offline, blocked CDN, ad blocker), <code>main.js</code> force-reveals all content after ~1.2s so the page is still fully readable — you just lose the animation and the 3D object (a soft CSS glow stands in for it, see <code>.hero-scene-fallback</code>).</p>
+
+    <h2 id="interactive">Interactive sections</h2>
+    <p>Everything below is plain JavaScript in <code>js/main.js</code>, wired to the markup through <code>data-*</code> attributes rather than IDs, so you can move or restyle the markup without touching the script. Each block null-checks its own elements: delete a section from <code>index.html</code> and the rest of the page keeps working.</p>
+
+    <h3>Hero showcase deck</h3>
+    <p>The large featured card in the hero (<code>#stageMainCard</code>) carries a <code>data-project</code> value, and the segmented buttons below it carry <code>data-stage</code>. Clicking a button swaps the featured project in place; clicking the card opens the case-study modal for whichever project is currently featured. To change which three projects appear, edit the <code>data-stage</code> buttons and make sure each value matches a <code>data-project</code> key used by the work cards.</p>
+
+    <h3>Case-study modal &amp; brand asset inspector</h3>
+    <p>Opens from any <code>.work-card</code> or from the hero deck. Its four panels are driven by <code>data-tab</code> (<code>strategy</code>, <code>system</code>, <code>deliverables</code>, <code>review</code>) on buttons marked up with <code>role="tab"</code> and <code>aria-selected</code>; the dialog itself carries <code>role="dialog"</code>, <code>aria-modal="true"</code> and <code>aria-labelledby</code>.</p>
+    <p>It closes on Escape, on a click on the backdrop, and on the close button. The prev/next buttons cycle projects without closing, and the left/right arrow keys do the same while it is open — both wrap around at the ends. Its "Inquire" button closes the modal, prefills the contact textarea with a sentence naming the case study you were just reading, scrolls to the contact section and focuses the field, so a visitor never has to retype what caught their eye.</p>
+    <p>To add a project: add a <code>.work-card</code> with a new <code>data-project</code> value and a matching entry in the <code>PROJECTS_DATA</code> object in <code>js/main.js</code>. The copy for all four tabs, the palette swatches and the ordering (<code>PROJECT_ORDER</code>) all live there — there is no CMS and no fetch.</p>
+
+    <h3>Brand Lab</h3>
+    <p>The <code>#lab</code> section crosses four creative directions (<code>data-vibe</code>: <code>kinetic</code>, <code>minimal</code>, <code>editorial</code>, <code>brutalist</code>) with four palettes (<code>data-palette</code>: <code>amber</code>, <code>quartz</code>, <code>clay</code>, <code>mineral</code>) and re-renders the preview card for the selected combination. The type treatments and color values for each option live in the <code>LAB_CONFIGS</code> object in <code>js/main.js</code>; add an option by adding a button with a new value and a matching key under <code>LAB_CONFIGS.vibes</code> or <code>LAB_CONFIGS.palettes</code>.</p>
+    <p>This is a genuine selling device for a studio — it lets a prospect feel the range of your work in ten seconds. If it isn't right for you, delete the <code>&lt;section id="lab"&gt;</code> block and its nav link.</p>
+
+    <h3>Selected Work carousel</h3>
+    <p>The work section shows one project at a time. Prev/next (<code>#workPrev</code> / <code>#workNext</code>) and a generated row of dots toggle an <code>.is-active</code> class between the cards rather than scrolling a track, so a card is never half-clipped at the edge of a viewport. The prev/next buttons disable themselves at the first and last card — it does not wrap. The dots are built from the cards themselves and take their accessible labels from each card's <code>&lt;h3&gt;</code>, so adding a project needs no change to the controls.</p>
+    <p>It deliberately does <em>not</em> use GSAP, so it keeps working if the CDN is blocked. Project visuals are pure CSS and inline SVG; see <a href="#customize">Customization</a> for swapping in real screenshots.</p>
+
+    <h3>Process stepper</h3>
+    <p>The <code>#process</code> timeline uses <code>data-step</code> (<code>0</code>–<code>3</code>) on each step card, with a detail panel showing that step's deliverables. On narrow viewports the panel is moved inside the selected card rather than left below the timeline, so the selection and its detail stay together. Edit the step copy directly in <code>index.html</code> and the deliverables lists in the <code>PROCESS_STEPS</code> array in <code>js/main.js</code>.</p>
+
+    <h3>Scope &amp; timeline estimator</h3>
+    <p>In the contact section, scope chips (<code>data-scope</code>) are multi-select and timeline chips (<code>data-timeline</code>) are single-select; the selection is summarized for the inquiry. The values are read straight from the attributes, so renaming a service is a one-word edit in the markup.</p>
+
+    <h3>Custom cursor</h3>
+    <p>The momentum cursor activates only on devices that report real hover support, and only when <code>prefers-reduced-motion</code> is not set. Any element you want it to react to gets <code>data-cursor-hover</code>. To remove the cursor entirely, delete its block from <code>js/main.js</code> and the <code>.cursor</code> rules from <code>css/style.css</code>; the <code>data-cursor-hover</code> attributes then do nothing and can be left in place.</p>
 
     <h2 id="structure">Folder structure</h2>
     <pre><code>halo/
@@ -140,14 +169,20 @@ python3 -m http.server 8080</code></pre>
     <h2 id="performance">Performance &amp; accessibility</h2>
     <ul>
       <li>The 3D scene caps its pixel ratio at 2x and pauses rendering when the tab isn't visible.</li>
-      <li>Everything respects <code>prefers-reduced-motion</code>: the cursor, marquees, scroll-cue, the decode-text reveal and every scroll animation in <code>animations.js</code> turn off and the page shows fully revealed, static content instead — including the counting stats, which render their final number immediately rather than starting at 0 with no way to count up.</li>
+      <li>Everything respects <code>prefers-reduced-motion</code>: the custom cursor, the marquee strip, the hero deck tilt, the decode-text reveal and every scroll animation in <code>animations.js</code> turn off, and the page shows fully revealed, static content instead — including the counting stats, which render their final number immediately rather than starting at 0 with no way to count up. The reveal and marquee overrides are in a <code>@media (prefers-reduced-motion: reduce)</code> block in <code>css/style.css</code>, so they hold even if JavaScript never runs.</li>
       <li>The custom cursor only activates on devices that report real hover support, so it won't interfere with touch.</li>
-      <li>The scroll-progress bar and back-to-top ring are plain scroll listeners with no GSAP dependency, so they keep working even if the CDN libraries fail to load.</li>
-      <li>The work gallery's card-scale effect reads layout on every scrub frame (<code>getBoundingClientRect()</code>) — if you add many more cards, consider throttling it or dropping it for a simpler pin-only effect on lower-end devices.</li>
+      <li>None of the interactive sections depend on GSAP or Three.js: the hero deck, the case-study modal, the Brand Lab, the work carousel, the process stepper and the estimator are all plain JavaScript in <code>js/main.js</code>, so they keep working if the CDN is blocked. What you lose in that case is the scroll animation and the 3D field, not the functionality.</li>
+      <li>The work carousel swaps cards with a class toggle and has no scroll-linked layout reads, so adding projects costs you nothing in frame time.</li>
+      <li>The hero deck's 3D perspective tilt reads <code>getBoundingClientRect()</code> on mouse move and is gated behind both <code>prefers-reduced-motion</code> and <code>(hover: hover)</code>, so it never runs on touch devices. It is the only tilt effect in the template — the work cards do not tilt.</li>
     </ul>
 
     <h2 id="forms">Wiring up forms</h2>
-    <p>The contact form in <code>index.html</code> is demo-only — see the same pattern in the Launchly template's docs: point <code>action</code> at a form backend service or your own API and remove the <code>data-demo-form</code> attribute.</p>
+    <div class="callout"><strong>The contact form is demo-only as shipped.</strong> It validates its fields and shows a success toast, but the submission is not sent anywhere. Connect it before you launch or you will lose every inquiry.</div>
+    <p>The form is marked with <code>data-demo-form</code>, which is what tells <code>js/main.js</code> to intercept the submit and fake the result. To make it real, remove that attribute and give the form an <code>action</code>:</p>
+    <pre><code>&lt;!-- Formspree, Netlify Forms, Basin, your own endpoint — all the same shape --&gt;
+&lt;form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"&gt;</code></pre>
+    <p>With <code>data-demo-form</code> gone the browser submits the form normally and the toast no longer fires, so the service's own confirmation page is what the visitor sees. If you would rather keep the toast and the in-page experience, leave the attribute off and post from your own <code>fetch()</code> in its place — and handle the failure branch, so a lost inquiry is visible to the visitor instead of silent.</p>
+    <p>The scope and timeline chips are plain buttons, not inputs. If you want their values submitted, add a hidden input and write the current selection into it when a chip is clicked.</p>
 
     <h2 id="browser-support">Browser support</h2>
     <p>Tested in the latest Chrome, Firefox, Safari and Edge. The 3D hero needs WebGL — essentially every browser released in the last decade has it, but very old or locked-down browsers may fall back to the CSS glow only, which is an intentional, graceful fallback rather than a bug.</p>

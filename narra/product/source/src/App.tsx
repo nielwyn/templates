@@ -85,7 +85,7 @@ export default function App() {
         onClose={handleCloseApply}
       />
 
-      {/* Floating Template Customizer & Seller Guide */}
+      {/* Floating colorway switcher (demo aid — safe to delete, see component docblock) */}
       <TemplateCustomizer
         currentTheme={theme}
         onThemeChange={setTheme}

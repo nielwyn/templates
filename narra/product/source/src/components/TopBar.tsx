@@ -17,7 +17,7 @@ export default function TopBar({ onApplyClick, onCustomizeClick }: TopBarProps) 
           <button 
             onClick={onCustomizeClick}
             className="ml-3 text-[11px] underline underline-offset-2 hover:text-[var(--accent-primary)] cursor-pointer text-[var(--accent-secondary)] transition-colors"
-            title="Preview seller template colorways & tokens"
+            title="Preview the built-in colorways"
           >
             Customize Template
           </button>

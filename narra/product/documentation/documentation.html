@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation — Narra Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-serif: "Fraunces", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+    --bg-canvas: #FAF7F2;
+    --bg-surface: #FFFFFF;
+    --bg-surface-subtle: #F3EEE6;
+    --bg-card: #F6F2EB;
+    --border-subtle: #E8E0D5;
+    --border-medium: #D5CAB9;
+    --text-primary: #1C1917;
+    --text-secondary: #57534E;
+    --text-muted: #8C857B;
+    --accent-primary: #9C5336;
+    --accent-primary-hover: #7F3F26;
+    --accent-tint: #F7EFE9;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg-canvas); color: var(--text-primary);
+    font-family: var(--font-sans); line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.25; }
+  a { color: var(--accent-primary); }
+  a:hover { color: var(--accent-primary-hover); }
+  .topbar {
+    border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-inner {
+    max-width: 1160px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-family: var(--font-serif); font-size: 20px; text-decoration: none; color: var(--text-primary); }
+  .brand span { color: var(--accent-primary); }
+  .topbar a.plain { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+  .docs-wrap { display: flex; max-width: 1160px; margin: 0 auto; padding: 40px 24px 100px; gap: 48px; }
+  .docs-side { width: 230px; flex-shrink: 0; position: sticky; top: 90px; align-self: flex-start; }
+  .docs-side a {
+    display: block; padding: 7px 0; font-size: 13.5px; color: var(--text-secondary); text-decoration: none;
+  }
+  .docs-side a:hover { color: var(--accent-primary); }
+  .docs-content {
+    flex: 1; min-width: 0; background: var(--bg-surface);
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 48px;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent-primary); margin-bottom: 10px;
+  }
+  .docs-content h1 { font-size: 32px; margin: 0 0 12px; }
+  .docs-content h2 {
+    font-size: 23px; margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--border-subtle);
+  }
+  .docs-content h2:first-of-type { border-top: none; padding-top: 0; margin-top: 34px; }
+  .docs-content h3 { font-size: 17px; margin-top: 28px; margin-bottom: 6px; }
+  .docs-content p, .docs-content li { font-size: 15px; color: var(--text-secondary); }
+  .docs-content ul, .docs-content ol { padding-left: 22px; margin-bottom: 16px; }
+  .docs-content li { margin-bottom: 7px; }
+  code, pre { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; }
+  code {
+    background: var(--bg-surface-subtle); padding: 2px 6px; border-radius: 4px;
+    color: var(--accent-primary-hover); word-break: break-word;
+  }
+  pre {
+    background: #1C1917; color: #E8E0D5; padding: 18px 20px; border-radius: var(--radius-sm);
+    overflow-x: auto; margin: 16px 0; line-height: 1.55;
+  }
+  pre code { background: none; color: inherit; padding: 0; }
+  .docs-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+  .docs-table th, .docs-table td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .docs-table th { font-family: var(--font-serif); font-weight: 400; font-size: 14px; color: var(--text-primary); }
+  .docs-table td { color: var(--text-secondary); }
+  .docs-table td code { white-space: nowrap; }
+  .callout {
+    background: var(--bg-card); border-left: 3px solid var(--accent-primary);
+    padding: 14px 18px; border-radius: var(--radius-sm); font-size: 14px; margin: 18px 0;
+  }
+  .callout.warn { background: var(--accent-tint); border-left-color: var(--accent-primary-hover); }
+  .callout p { margin: 0; font-size: 14px; }
+  .callout p + p { margin-top: 8px; }
+  @media (max-width: 860px) {
+    .docs-wrap { flex-direction: column; gap: 24px; padding: 24px 16px 70px; }
+    .docs-side { display: none; }
+    .docs-content { padding: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../dist/index.html">Narra<span>.</span></a>
+    <a class="plain" href="../dist/index.html">&larr; Back to the template</a>
+  </div>
+</header>
+
+<div class="docs-wrap">
+  <aside class="docs-side">
+    <a href="#overview">Overview</a>
+    <a href="#dependencies">Dependencies — read first</a>
+    <a href="#included">What's included</a>
+    <a href="#getting-started">Getting started</a>
+    <a href="#copy">Editing the copy</a>
+    <a href="#colors">Colors &amp; colorways</a>
+    <a href="#fonts">Fonts</a>
+    <a href="#images">Images</a>
+    <a href="#audio">Wiring up the audio player</a>
+    <a href="#forms">Wiring up the application form</a>
+    <a href="#switcher">Removing the colorway switcher</a>
+    <a href="#deploy">Deploying</a>
+    <a href="#browser-support">Browser support</a>
+    <a href="#credits">Credits &amp; licenses</a>
+    <a href="#support">Support</a>
+  </aside>
+
+  <main class="docs-content">
+    <div class="eyebrow">Documentation</div>
+    <h1 id="overview">Narra — Boutique Editorial Sales Page Template</h1>
+    <p>
+      Narra is a long-form editorial sales page for boutique agency owners, independent
+      consultants, executive coaches and personal brands selling high-ticket retainers.
+      Version 1.2.0.
+    </p>
+    <p>
+      It ships two ways: a <strong>prebuilt page</strong> you can open and host immediately,
+      and the <strong>React source project</strong> it was built from. Read the next section
+      before you decide which one you're working with.
+    </p>
+
+    <h2 id="dependencies">Dependencies — read first</h2>
+    <p>
+      Narra's editable source is a <strong>React 19 + TypeScript + Vite 8 + Tailwind CSS 4</strong>
+      project. That means there is a build step: to change the page you edit files in
+      <code>source/</code>, run a build, and that produces the static page.
+    </p>
+    <div class="callout warn">
+      <p>
+        <strong>If you don't want to run a build step:</strong> use <code>dist/</code> as-is.
+        It is a finished static page — HTML, one CSS file, one JS file and the images. You can
+        host it anywhere and edit its text directly if you're comfortable in built markup, but
+        the built files are minified, so real editing belongs in <code>source/</code>.
+      </p>
+      <p>
+        <strong>If you want to customize properly:</strong> you need Node.js installed and
+        you'll run two commands. Requirements and steps are in
+        <a href="#getting-started">Getting started</a>.
+      </p>
+    </div>
+    <table class="docs-table">
+      <tr><th>Requirement</th><th>Version</th></tr>
+      <tr><td>Node.js</td><td><code>^20.19.0</code> or <code>&gt;=22.12.0</code> (required by Vite 8)</td></tr>
+      <tr><td>Tested on</td><td>Node <code>v24.14.1</code>, npm <code>11.11.0</code></td></tr>
+      <tr><td>Internet connection</td><td>Needed for <code>npm install</code>, and for Google Fonts at runtime</td></tr>
+    </table>
+    <p>
+      A <code>package-lock.json</code> is included, so <code>npm install</code> installs the exact
+      dependency versions this release was built and tested with. You should not need
+      <code>--force</code> or <code>--legacy-peer-deps</code>; if you do, something is wrong — email
+      support rather than forcing it.
+    </p>
+
+    <h2 id="included">What's included</h2>
+<pre><code>narra/
+├── dist/                      Prebuilt static page — open index.html
+│   ├── index.html
+│   └── assets/                hashed css, js and images
+├── source/                    Editable React + Vite project
+│   ├── index.html             HTML shell (title, meta, font links)
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   └── src/
+│       ├── main.tsx           React entry point
+│       ├── App.tsx            Page composition — section order lives here
+│       ├── index.css          Design tokens + colorways + base styles
+│       ├── types.ts           Shared TypeScript interfaces
+│       ├── data/content.ts    Curriculum, case studies, FAQ, vault copy
+│       ├── assets/images/     The four photographs
+│       └── components/        One file per page section
+├── documentation/             This guide
+├── README.txt                 Quick start
+├── LICENSE.txt                Bundled-asset licenses &amp; attribution
+└── CHANGELOG.txt              Version history</code></pre>
+    <p>The page is composed of ten sections, in this order, all wired up in <code>src/App.tsx</code>:</p>
+    <table class="docs-table">
+      <tr><th>#</th><th>Section</th><th>Component</th></tr>
+      <tr><td>—</td><td>Sticky navigation</td><td><code>TopBar.tsx</code></td></tr>
+      <tr><td>1</td><td>Hero with social proof</td><td><code>Hero.tsx</code></td></tr>
+      <tr><td>2</td><td>Core tension / reframe</td><td><code>ThePlateau.tsx</code></td></tr>
+      <tr><td>3</td><td>4-pillar methodology</td><td><code>PillarsFramework.tsx</code></td></tr>
+      <tr><td>4</td><td>12-week curriculum tabs</td><td><code>CurriculumTabs.tsx</code></td></tr>
+      <tr><td>5</td><td>Deliverables vault</td><td><code>VaultDeliverables.tsx</code></td></tr>
+      <tr><td>6</td><td>Audio masterclass preview</td><td><code>AudioSamplePreview.tsx</code></td></tr>
+      <tr><td>7</td><td>Case studies</td><td><code>CaseStudies.tsx</code></td></tr>
+      <tr><td>8</td><td>Mentor story</td><td><code>AboutMentor.tsx</code></td></tr>
+      <tr><td>9</td><td>Investment &amp; pricing</td><td><code>PricingInvestment.tsx</code></td></tr>
+      <tr><td>10</td><td>FAQ accordion</td><td><code>FAQSection.tsx</code></td></tr>
+      <tr><td>—</td><td>Footer</td><td><code>Footer.tsx</code></td></tr>
+      <tr><td>—</td><td>Application drawer (modal)</td><td><code>ApplicationDrawer.tsx</code></td></tr>
+      <tr><td>—</td><td>Colorway switcher (demo aid)</td><td><code>TemplateCustomizer.tsx</code></td></tr>
+    </table>
+    <p>
+      To remove a section, delete its line from the <code>&lt;main&gt;</code> block in
+      <code>src/App.tsx</code>. To reorder, move the lines. Nothing else needs to change.
+    </p>
+
+    <h2 id="getting-started">Getting started</h2>
+    <h3>Just look at it</h3>
+    <p>Open <code>dist/index.html</code> in any modern browser. Nothing to install.</p>
+
+    <h3>Edit it</h3>
+<pre><code>cd source
+npm install        # once
+npm run dev        # live preview; open the URL it prints
+</code></pre>
+    <p>Edit any file under <code>src/</code> and the browser updates. When you're happy:</p>
+<pre><code>npm run build      # writes source/dist/
+npm run lint       # optional: TypeScript check (tsc --noEmit)
+</code></pre>
+    <p>
+      Then copy the contents of <code>source/dist/</code> over the top-level <code>dist/</code>
+      folder — that folder is what you upload to your host.
+    </p>
+    <div class="callout">
+      <p>
+        <code>vite.config.ts</code> sets <code>base: './'</code>, which makes the build use
+        relative asset paths. That's what lets <code>dist/index.html</code> work both when
+        opened directly from your filesystem and when served from a subfolder on your host.
+        If you move the site to a domain root you can leave it exactly as it is.
+      </p>
+    </div>
+
+    <h2 id="copy">Editing the copy</h2>
+    <p>Text lives in two places:</p>
+    <ul>
+      <li>
+        <strong><code>src/data/content.ts</code></strong> — the repeating, data-shaped copy:
+        <code>CURRICULUM_PHASES</code>, <code>CASE_STUDIES</code>, <code>FAQ_ITEMS</code> and
+        <code>VAULT_ASSETS</code>. Add, remove or reorder array entries and the page follows.
+        The shape of each entry is defined in <code>src/types.ts</code>, so your editor will
+        tell you if a field is missing.
+      </li>
+      <li>
+        <strong>The component files</strong> — headlines, paragraphs and button labels are
+        written inline in the relevant component under <code>src/components/</code>. Use the
+        section table above to find the file.
+      </li>
+    </ul>
+    <p>
+      Page title, meta description and social preview tags are in
+      <code>source/index.html</code>, not in a component. Update them before you launch —
+      they still say "Narra".
+    </p>
+    <div class="callout warn">
+      <p>
+        All names, testimonials, revenue figures and prices in the template are fictional
+        demonstration copy. Replace every one of them. Do not publish someone else's case-study
+        numbers as your own.
+      </p>
+    </div>
+
+    <h2 id="colors">Colors &amp; colorways</h2>
+    <p>
+      Every color is a CSS custom property declared once in <code>:root</code> in
+      <code>src/index.css</code>. Change a value there and it propagates everywhere.
+    </p>
+    <table class="docs-table">
+      <tr><th>Token</th><th>What it controls</th></tr>
+      <tr><td><code>--bg-canvas</code></td><td>Page background</td></tr>
+      <tr><td><code>--bg-surface</code></td><td>Cards and panels that sit above the canvas</td></tr>
+      <tr><td><code>--bg-surface-subtle</code></td><td>Alternating band backgrounds</td></tr>
+      <tr><td><code>--bg-card</code></td><td>Nested card fills</td></tr>
+      <tr><td><code>--border-subtle</code> / <code>--border-medium</code></td><td>Hairlines and emphasized borders</td></tr>
+      <tr><td><code>--text-primary</code></td><td>Headings and body text</td></tr>
+      <tr><td><code>--text-secondary</code></td><td>Supporting paragraphs</td></tr>
+      <tr><td><code>--text-muted</code></td><td>Captions, metadata, timestamps</td></tr>
+      <tr><td><code>--accent-primary</code> / <code>--accent-primary-hover</code></td><td>Buttons, links, active states</td></tr>
+      <tr><td><code>--accent-tint</code></td><td>Tinted accent backgrounds</td></tr>
+      <tr><td><code>--accent-secondary</code></td><td>Secondary accent (olive/sage notes)</td></tr>
+      <tr><td><code>--radius-sm/md/lg/full</code></td><td>Corner radius scale</td></tr>
+      <tr><td><code>--shadow-subtle</code> / <code>--shadow-card</code></td><td>Elevation</td></tr>
+      <tr><td><code>--container-max</code></td><td>Maximum content width</td></tr>
+      <tr><td><code>--font-serif</code> / <code>--font-sans</code></td><td>Font stacks</td></tr>
+    </table>
+    <h3>The four presets</h3>
+    <p>
+      Narra Linen &amp; Cedar is the default (it <em>is</em> <code>:root</code>). The other three
+      are override blocks further down <code>src/index.css</code>:
+    </p>
+<pre><code>[data-theme="olive"]       { /* Tuscan Olive &amp; Clay */ }
+[data-theme="noir"]        { /* Obsidian &amp; Gold */ }
+[data-theme="terracotta"]  { /* Terracotta Silk */ }</code></pre>
+    <p>
+      They're applied by setting <code>data-theme</code> on <code>&lt;html&gt;</code>. To ship
+      one as your permanent look, change the initial state in <code>src/App.tsx</code>:
+    </p>
+<pre><code>const [theme, setTheme] = useState&lt;ThemeMode&gt;('noir');</code></pre>
+    <p>
+      To build your own, copy one of the blocks, rename it, and add the name to the
+      <code>ThemeMode</code> union in <code>src/types.ts</code>.
+    </p>
+
+    <h2 id="fonts">Fonts</h2>
+    <p>
+      Narra uses <strong>Fraunces</strong> for headings and <strong>Plus Jakarta Sans</strong>
+      for body text, both loaded from Google Fonts by a <code>&lt;link&gt;</code> in
+      <code>source/index.html</code>. They are not bundled, so the page needs a network
+      connection to render in its intended typography — offline it falls back to Georgia and
+      your system sans-serif.
+    </p>
+    <p>To swap them: change the Google Fonts URL in <code>source/index.html</code>, then update the two stacks in <code>src/index.css</code>:</p>
+<pre><code>--font-serif: "Your Display Font", Georgia, serif;
+--font-sans:  "Your Body Font", system-ui, sans-serif;</code></pre>
+    <p>
+      Headings get the serif stack through a single rule
+      (<code>h1, h2, h3, h4, .font-serif-editorial</code>), so you don't need to touch
+      components. Apply <code>class="font-serif-editorial"</code> to put the display face on
+      anything else.
+    </p>
+
+    <h2 id="images">Images</h2>
+    <p>
+      Four photographs ship in <code>src/assets/images/</code>. They are
+      <strong>AI-generated placeholders</strong> — see <code>LICENSE.txt</code>. Replace them
+      with your own photography before launch; a sales page whose portrait isn't the person it
+      names misleads your visitors.
+    </p>
+    <p>
+      To replace one, drop your file into <code>src/assets/images/</code> and update the
+      <code>import</code> at the top of the component that uses it. Vite hashes and copies
+      imported images automatically, so there's no path to configure.
+    </p>
+    <div class="callout warn">
+      <p>
+        The bundled JPEGs are large — roughly 700–890&nbsp;KB each, about 3.1&nbsp;MB total —
+        because they're full-resolution placeholders. Before you launch, export your
+        replacements as WebP or AVIF at the size they actually display. It is the single
+        biggest thing you can do for your page speed score.
+      </p>
+    </div>
+
+    <h2 id="audio">Wiring up the audio player</h2>
+    <div class="callout warn">
+      <p>
+        <strong>The audio player is demo-only as shipped.</strong> It animates a waveform and
+        advances a progress bar on a timer. There is no <code>&lt;audio&gt;</code> element
+        behind it and no audio file is included.
+      </p>
+    </div>
+    <p>
+      To make it real, open <code>src/components/AudioSamplePreview.tsx</code>, put your file in
+      <code>src/assets/</code>, and drive the existing state from a real audio element instead
+      of the interval:
+    </p>
+<pre><code>import { useState, useRef, useEffect } from 'react';
+import excerpt from '../assets/masterclass-excerpt.mp3';
+
+export default function AudioSamplePreview() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef&lt;HTMLAudioElement&gt;(null);
+
+  // Replace the existing setInterval effect with this:
+  useEffect(() =&gt; {
+    const el = audioRef.current;
+    if (!el) return;
+    const onTime = () =&gt; setProgress((el.currentTime / el.duration) * 100 || 0);
+    const onEnd = () =&gt; { setIsPlaying(false); setProgress(0); };
+    el.addEventListener('timeupdate', onTime);
+    el.addEventListener('ended', onEnd);
+    return () =&gt; {
+      el.removeEventListener('timeupdate', onTime);
+      el.removeEventListener('ended', onEnd);
+    };
+  }, []);
+
+  // And make the existing play/pause button call this instead of setIsPlaying alone:
+  const toggle = () =&gt; {
+    const el = audioRef.current;
+    if (!el) return;
+    if (isPlaying) { el.pause(); } else { void el.play(); }
+    setIsPlaying(!isPlaying);
+  };
+
+  // Render this alongside the existing markup:
+  // &lt;audio ref={audioRef} src={excerpt} preload="metadata" /&gt;
+}</code></pre>
+    <p>
+      The waveform bars and the progress fill already read from <code>progress</code>, so they
+      start tracking real playback as soon as the effect above replaces the timer. Keep the
+      <code>duration</code> label in the markup honest — it's hardcoded to
+      <code>04:12</code>.
+    </p>
+    <p>
+      If you'd rather not ship audio at all, delete
+      <code>&lt;AudioSamplePreview /&gt;</code> from <code>src/App.tsx</code> and remove the
+      component file.
+    </p>
+
+    <h2 id="forms">Wiring up the application form</h2>
+    <div class="callout warn">
+      <p>
+        <strong>The application drawer is demo-only as shipped.</strong> It validates its
+        inputs and advances to an "Application Received" screen, but the submission is not
+        transmitted anywhere. Connect it before you launch, or you will lose every lead.
+      </p>
+    </div>
+    <p>
+      Open <code>src/components/ApplicationDrawer.tsx</code>. The step-2 form's
+      <code>onSubmit={handleNext}</code> is where the data should leave the page. Pick one:
+    </p>
+    <h3>Formspree (no backend)</h3>
+<pre><code>const handleNext = async (e: React.FormEvent) =&gt; {
+  e.preventDefault();
+  if (step === 1) { if (validateStep1()) setStep(2); return; }
+
+  await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(formData),
+  });
+  setStep(3);
+};</code></pre>
+    <h3>Netlify Forms</h3>
+    <p>
+      Netlify detects forms in the <em>built HTML</em>, and this form is rendered by React, so
+      add a hidden static form to <code>source/index.html</code> for detection and post to it:
+    </p>
+<pre><code>&lt;!-- in source/index.html, inside &lt;body&gt; --&gt;
+&lt;form name="application" netlify hidden&gt;
+  &lt;input type="text" name="name" /&gt;
+  &lt;input type="email" name="email" /&gt;
+  &lt;textarea name="message"&gt;&lt;/textarea&gt;
+&lt;/form&gt;</code></pre>
+<pre><code>// then in handleNext:
+await fetch('/', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({ 'form-name': 'application', ...formData }).toString(),
+});
+setStep(3);</code></pre>
+    <h3>Your own endpoint</h3>
+    <p>
+      Same shape — <code>fetch</code> your URL with <code>JSON.stringify(formData)</code>.
+      Whichever you choose, handle the failure case: wrap the <code>await</code> in
+      <code>try/catch</code> and show an error state instead of the confirmation screen, so a
+      lead never silently disappears.
+    </p>
+    <p>
+      The drawer is opened by <code>onApplyClick</code>, which is passed to the nav, hero,
+      curriculum, pricing and footer. If you replace it with a Calendly or Typeform link,
+      change the handler once in <code>src/App.tsx</code> and every call-to-action follows.
+    </p>
+
+    <h2 id="switcher">Removing the colorway switcher</h2>
+    <p>
+      The floating "Colorway" pill at the bottom right is a preview aid for choosing a theme,
+      not part of the sales page. Once you've picked one:
+    </p>
+    <ol>
+      <li>Set your choice as the initial <code>theme</code> state in <code>src/App.tsx</code>.</li>
+      <li>Delete the <code>&lt;TemplateCustomizer ... /&gt;</code> element and its import.</li>
+      <li>Delete the <code>onCustomizeClick</code> prop from <code>&lt;TopBar /&gt;</code> and the button that uses it in <code>TopBar.tsx</code>.</li>
+      <li>Delete <code>src/components/TemplateCustomizer.tsx</code> and the <code>isCustomizerOpen</code> state.</li>
+    </ol>
+    <p>Rebuild. Nothing else depends on it.</p>
+
+    <h2 id="deploy">Deploying</h2>
+    <p>
+      Upload the contents of <code>dist/</code> to any static host — Netlify, Vercel,
+      Cloudflare Pages, GitHub Pages, S3, or plain cPanel/FTP. There is no server-side
+      component, no database and no environment variable to set.
+    </p>
+    <p>
+      If your host builds from a Git repository instead, point it at <code>source/</code> with
+      build command <code>npm run build</code> and publish directory <code>dist</code>.
+    </p>
+
+    <h2 id="browser-support">Browser support</h2>
+    <p>
+      Current versions of Chrome, Firefox, Safari and Edge, on desktop and mobile. The layout
+      is responsive from 360&nbsp;px up. The build targets modern browsers that support ES
+      modules; Internet Explorer is not supported.
+    </p>
+
+    <h2 id="credits">Credits &amp; licenses</h2>
+    <table class="docs-table">
+      <tr><th>Asset</th><th>Source</th><th>License</th></tr>
+      <tr><td>Fraunces</td><td>Google Fonts (CDN, not bundled)</td><td>SIL OFL 1.1</td></tr>
+      <tr><td>Plus Jakarta Sans</td><td>Google Fonts (CDN, not bundled)</td><td>SIL OFL 1.1</td></tr>
+      <tr><td>Icons</td><td>Inline SVG, written for this template</td><td>Included</td></tr>
+      <tr><td>Photographs (4)</td><td>AI-generated placeholders</td><td>See <code>LICENSE.txt</code></td></tr>
+      <tr><td>React, Vite, Tailwind CSS, TypeScript</td><td>npm (not redistributed)</td><td>MIT / Apache-2.0</td></tr>
+    </table>
+    <p>Full detail and attribution notes are in <code>LICENSE.txt</code> at the top level of this download.</p>
+
+    <h2 id="support">Support</h2>
+    <p>
+      Questions about setup or customization: <a href="mailto:nghoangnghiabt@gmail.com">nghoangnghiabt@gmail.com</a>.
+      Please include your Node version and the exact command output if something fails to
+      install or build.
+    </p>
+  </main>
+</div>
+
+</body>
+</html>
