@@ -3,55 +3,26 @@ HALO — Changelog
 
 v1.1.6 — 2026-11-08
 --------------------
-Hero showcase rebuild, two new sections, and a case-study modal. This is the
-release the listing screenshots should be taken from — v1.1.5's zip predates
-all of it.
+Packages the hero-showcase rebuild — v1.1.5's zip predated all of it.
 
-Added
-- Hero "studio stage" showcase deck: a large featured work card with a
-  segmented control (Marigold / Kindred / Nocturne) that swaps the featured
-  project in place, plus a grounded verification and rating strip below the
-  card. The card is clickable and opens the new case-study modal.
-- Case Study Modal & Brand Asset Inspector: opens from any work card or the
-  hero deck, with four tabbed panels (Strategy, System, Deliverables,
-  Review) wired with proper `role="tab"`/`aria-selected` semantics,
-  prev/next project cycling, Escape-to-close, and an "Inquire" action that
-  closes the modal and carries the project through to the contact form.
-- Brand Lab (`#lab`) — interactive real-time identity simulator: four
-  direction presets (Bold & Kinetic, Quiet Precision, Editorial Luxury,
-  Brutalist Studio) crossed with four palettes (Sun & Coral, Midnight
-  Quartz, Desert Clay, Mineral Teal), rendering a live brand preview card.
-- Process (`#process`) — four-step stepper with a deliverables detail panel.
-  On mobile the panel nests inside the selected step card instead of sitting
-  below the timeline, so the selection and its detail never separate.
-- Project scope & timeline estimator in the contact section: multi-select
-  scope chips and single-select timeline chips that feed the inquiry.
-- Custom momentum cursor, paired with the preloader, with `data-cursor-hover`
-  as the opt-in hook on interactive elements. Hover-capable devices only.
-- 3D perspective mouse tilt on the hero showcase deck, gated behind both
-  `prefers-reduced-motion` and `(hover: hover)`.
-- Toast notifications for the demo form.
-
-Changed
-- Selected Work is now a one-card-at-a-time carousel with prev/next controls
-  and generated dot navigation (`js/main.js`) instead of a GSAP-pinned
-  horizontal gallery. Cards are swapped with an `.is-active` class toggle
-  rather than a scrolling track, so a card is never left half-clipped at a
-  viewport edge; prev/next disable themselves at the first and last card.
-  It uses no GSAP, so it keeps working even if the CDN libraries fail.
-- `js/main.js` reorganized around the new feature set; feature sections are
-  listed in the file header.
-- Navigation expanded to five links (Services, Brand Lab, Work, Process,
-  About) with a single primary action.
-- `README.txt` and `documentation/documentation.html` updated to describe
-  the sections and interactions as they now ship.
-
-Notes
-- Still no build step: open `index.html`. GSAP 3.12.5 + ScrollTrigger and
-  Three.js 0.134.0 are still the only runtime dependencies, still pinned,
-  still loaded from jsDelivr, and the page still force-reveals all content
-  if they fail to load.
-- `prefers-reduced-motion` is respected by every addition above.
+- Added: hero "studio stage" deck with a segmented control to swap the
+  featured project, and a case-study modal (four tabbed panels, prev/next
+  and arrow-key cycling, Escape/backdrop close, and an "Inquire" action that
+  prefills the contact form with the case study you were reading).
+- Added: Brand Lab (`#lab`) — four creative directions x four palettes
+  rendering a live brand preview. Process (`#process`) — four-step stepper
+  with a deliverables panel. Scope and timeline chips in the contact section.
+- Added: preloader, custom momentum cursor (`data-cursor-hover`), hero deck
+  tilt, and toasts for the demo form.
+- Changed: Selected Work is now a one-card-at-a-time carousel with prev/next
+  and dots, replacing the GSAP-pinned horizontal gallery. No GSAP, so it
+  survives a blocked CDN. The scroll-progress bar and back-to-top ring are
+  gone.
+- Changed: nav expanded to five links; README and documentation rewritten to
+  match what actually ships.
+- Still no build step, dependencies unchanged (GSAP 3.12.5 + ScrollTrigger,
+  Three.js 0.134.0, pinned, via jsDelivr), and `prefers-reduced-motion` is
+  respected throughout.
 
 v1.1.5 — 2026-10-13
 --------------------
