@@ -1,43 +1,23 @@
-========================================================================
-NARRA — CHANGELOG
-========================================================================
+NARRA — Changelog
+==================
 
-v1.2.0 — 2026-11-08 (current release)
-------------------------------------------------------------------------
+v1.2.0 — 2026-11-08
+--------------------
 Initial release.
 
-Package
-- Ships as a prebuilt static page in dist/ (open index.html, works
-  offline, no installation) plus the full React + TypeScript + Vite +
-  Tailwind CSS 4 project in source/ for buyers who want to rebuild.
-- package-lock.json included, so npm install reproduces the exact
-  dependency set this release was built and tested against.
-- Verified from a clean extract on Node v24.14.1 / npm 11.11.0:
-  npm install -> npm run build -> npx tsc --noEmit, all exit 0, no
-  --force and no --legacy-peer-deps.
-- Full buyer documentation in documentation/documentation.html and
-  bundled-asset licensing in LICENSE.txt.
-
-Page
-- 10-section editorial sales page: hero with social proof, core-tension
-  reframe, 4-pillar methodology, interactive 12-week curriculum tabs,
-  deliverables vault, audio masterclass preview, 3 case studies,
-  mentor story, tiered investment module with payment toggle, and an
-  objection-handling FAQ accordion — plus sticky nav and footer.
-- 3-step client application drawer with inline validation.
-- 4 colorway presets (Linen & Cedar, Tuscan Olive & Clay, Obsidian &
-  Gold, Terracotta Silk) as [data-theme] token blocks in
-  src/index.css, previewable from the floating colorway switcher.
-- Design tokens in :root — colors, radii, shadows, container width and
-  font stacks are all one-place edits.
-- Semantic HTML, alt text on every image, WCAG AA contrast,
-  keyboard-navigable nav and accordions.
-
-Demo-only UI (documented, not wired)
-- The masterclass audio player animates a waveform on a timer; there is
-  no <audio> element and no audio file ships with the template.
-- The application drawer validates and confirms, but transmits nothing.
-- documentation/documentation.html gives the exact snippet to connect
-  each one.
-
-========================================================================
+- Ten-section editorial sales page: hero, core tension, 4-pillar method,
+  interactive 12-week curriculum tabs, deliverables vault, audio preview,
+  three case studies, mentor story, tiered pricing with payment toggle, and
+  an FAQ accordion — plus sticky nav, footer and a 3-step application drawer.
+- Four colorway presets (Linen & Cedar, Tuscan Olive & Clay, Obsidian & Gold,
+  Terracotta Silk) as [data-theme] blocks in src/index.css, previewable from
+  the floating colorway switcher.
+- Design tokens in :root — colors, radii, shadows, container width and fonts
+  are all one-place edits.
+- Ships as a prebuilt page in dist/ (open index.html, works offline) plus the
+  React + TypeScript + Vite + Tailwind 4 source in source/. Lockfile included.
+- Verified from a clean extract on Node v24.14.1: npm install, npm run build
+  and npx tsc --noEmit all exit 0, no flags.
+- WebP imagery, 424KB total; semantic HTML, alt text, WCAG AA contrast.
+- Demo-only: the audio player has no <audio> element and the application
+  drawer transmits nothing. Both are documented with the code to connect them.

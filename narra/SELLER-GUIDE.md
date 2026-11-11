@@ -62,73 +62,38 @@ An editorial, high-converting static sales page template built with clean design
 
 ## 3. Pre-Publish Blockers
 
-Restructured and repackaged on 2026-11-08. The template now matches the canonical layout in
-`AI_CONTEXT.md`: `product/dist/` + `product/source/` + `documentation/`, `README.txt`,
-`LICENSE.txt`, `CHANGELOG.txt`, with `narra-v1.2.0.zip` beside it and this guide outside
-`product/`.
+Restructured, repacked and re-encoded on 2026-11-10. Layout now matches
+`AI_CONTEXT.md`: `product/dist/` + `product/source/` + `documentation/`,
+`README.txt`, `LICENSE.txt`, `CHANGELOG.txt`, with `narra-v1.2.0.zip` beside it.
 
 ### Cleared
 
-- [x] **Dependency conflict fixed.** Dropped the nine unused/conflicting packages
-      (`@google/genai`, `express`, `dotenv`, `motion`, `lucide-react`, `tsx`, `esbuild`,
-      `@types/express`, `autoprefixer`, `@types/node`) and moved the build tooling to
-      `devDependencies`. The dependency list is now React + React DOM, with Vite, Tailwind,
-      TypeScript and the two plugins in dev. Every remaining package is imported by the
-      source.
-- [x] **Clean-machine check passes from the zip.** Fresh extract → `npm install` →
-      `npm run build` → `npx tsc --noEmit`, all exit 0, no `--force`, no
-      `--legacy-peer-deps`, 0 vulnerabilities, on Node v24.14.1 / npm 11.11.0. 40 packages.
-      `package-lock.json` is committed and shipped, and the built hashes from the extracted
-      zip match the committed `product/dist/` exactly — so the shipped build is reproducible
-      from the shipped source.
-- [x] **`README.txt` rewritten around what actually works.** The quick start now says to
-      open `dist/index.html` (the prebuilt page) and gives the Node version plus the
-      install/build commands for `source/`. `strict: true` is on in `tsconfig.json` and
-      typecheck is clean.
-- [x] **`base: './'` set in `vite.config.ts`.** Without it the build emits absolute
-      `/assets/...` paths and `dist/index.html` renders blank when opened from the
-      filesystem — which is the first thing a buyer does.
-- [x] **Google AI Studio scaffold removed.** Deleted `README.md` (Google banner + AI Studio
-      app link + `GEMINI_API_KEY` instructions), `.env.example` and `metadata.json`;
-      `package.json` is now `narra@1.2.0`; the AI Studio `DISABLE_HMR` block and the unused
-      `@` path alias are out of `vite.config.ts` and `tsconfig.json`.
-- [x] **Seller-only content removed from the product.** `TemplateCustomizer.tsx` no longer
-      renders the "View SELLER-GUIDE.md & Specs" modal with your price tiers, target
-      marketplaces, buyer avatar and listing tags. The colorway switcher stays, relabelled
-      "Colorway", with a docblock and a documentation section telling the buyer how to delete
-      it once they've picked a theme. The "seller" wording in `TopBar.tsx` and `App.tsx` is
-      gone too; the only remaining match in `product/` is the intended
-      `[seller name / shop name]` placeholder in `LICENSE.txt`.
-- [x] **`LICENSE.txt` written**, and it discloses the four photographs as AI-generated,
-      names the fictional demonstration copy explicitly, and states that the fonts and npm
-      dependencies are not redistributed.
-- [x] **`documentation/documentation.html` written** — ~520 lines, house style, leading with
-      a Dependencies section. Covers the folder layout, the section/component map, editing
-      copy, the token table, the four colorways, fonts, images, deploying, browser support
-      and credits.
-- [x] **Demo-only UI documented with working snippets.** The audio player (no `<audio>`
-      element, timer-driven waveform) and the application drawer (validates, confirms,
-      transmits nothing) are each flagged in `README.txt`, `CHANGELOG.txt` and the
-      documentation, with the real code to connect them — `timeupdate`/`ended` listeners for
-      the player, and Formspree / Netlify Forms / custom-endpoint variants for the form. The
-      snippets use the actual identifiers in the source (`formData`, `validateStep1`,
-      `handleNext`, `progress`).
-- [x] **Zip built and verified.** `narra-v1.2.0.zip`, single top-level `narra/` folder, 39
-      entries, 6.3MB, `node_modules` excluded; `diff -rq product/ /tmp/zipcheck/narra/`
-      reports nothing.
+- [x] **Install works.** Dropped ten unused/conflicting packages (`esbuild` was
+      failing ERESOLVE against Vite 8's peer range). Clean extract →
+      `npm install` → `npm run build` → `npx tsc --noEmit` all exit 0, no flags,
+      0 vulnerabilities, Node v24.14.1. Lockfile shipped, and the built hashes
+      match the committed `dist/` — the shipped build is reproducible.
+- [x] **`base: './'` set**, so `dist/index.html` isn't blank when opened from disk.
+- [x] **AI Studio scaffold gone**: `README.md`, `.env.example`, `metadata.json`,
+      the `DISABLE_HMR` block; `package.json` is now `narra@1.2.0`.
+- [x] **Seller content out of the product.** The "View SELLER-GUIDE.md & Specs"
+      modal that showed buyers your price tiers and listing tags is gone; the
+      colorway switcher stays.
+- [x] **`LICENSE.txt` + `documentation/` written**, both honest about the
+      AI-generated photos, the fictional demo copy, and the two demo-only
+      components (audio player, application form) — with the code to wire them.
+- [x] **Images re-encoded to WebP**: 3.1MB → 424KB, with `width`/`height` and
+      `loading`/`decoding` set. Zip is 980KB, down from 6.3MB.
+- [x] **Zip verified**: single top-level `narra/`, `node_modules` excluded,
+      `diff -rq` clean.
 
 ### Still blocking
 
-- [ ] **3.1MB of uncompressed hero JPEGs** (4 files, 708–892KB each). They ship twice — in
-      `source/src/assets/images/` and again hashed in `dist/assets/` — which is why the zip
-      is 6.3MB. Convert to WebP/AVIF at display size, target under ~1MB total, and add
-      `loading`/`decoding`/`width`/`height`. The documentation currently tells the buyer to
-      do this; it should not have to. This is the one real quality item left.
-- [ ] **Listing screenshots.** `listing-assets/screenshots/` doesn't exist for any template
-      in the catalog yet. Capture from the built page, numbered in display order.
-- [ ] **Verify the interactive states in a real browser** on the built output: curriculum
-      tabs, audio widget, the 3-step drawer, all four colorways, and mobile/tablet/1440px.
-      Nothing here has been clicked — only built and typechecked.
+- [ ] **Click through it in a real browser** — curriculum tabs, audio widget,
+      3-step drawer, all four colorways, mobile/tablet/1440px. Never opened,
+      only built and typechecked.
+- [ ] **Listing screenshots** (`listing-assets/screenshots/`, missing for every
+      template in the catalog) and a published live demo.
 
 ## 4. Pre-Publish Checklist (after the blockers are cleared)
 
