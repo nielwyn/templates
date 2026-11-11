@@ -37,10 +37,10 @@ The four photographs in this template are AI-generated images, created
 for this template as demonstration placeholders. They do not depict real
 people, places or businesses.
 
-  hero_editorial_founder_1792059117016.jpg
-  mentor_clara_portrait_1792059117422.jpg
-  editorial_case_study_studio_1792059117770.jpg
-  workspace_workshop_atmosphere_1792059117830.jpg
+  hero_editorial_founder_1792059117016.webp
+  mentor_clara_portrait_1792059117422.webp
+  editorial_case_study_studio_1792059117770.webp
+  workspace_workshop_atmosphere_1792059117830.webp
 
 They are provided so the template previews as designed. Replace them
 with your own photography before launching a real site — a sales page

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import studioImage from '../assets/images/editorial_case_study_studio_1792059117770.jpg';
+import studioImage from '../assets/images/editorial_case_study_studio_1792059117770.webp';
 
 export default function PillarsFramework() {
   const [imageError, setImageError] = useState(false);
@@ -149,6 +149,10 @@ export default function PillarsFramework() {
                 src={studioImage}
                 alt="Studio Narra physical workspace and material library"
                 className="w-full h-full object-cover"
+                width={1200}
+                height={896}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 onError={() => setImageError(true)}
               />

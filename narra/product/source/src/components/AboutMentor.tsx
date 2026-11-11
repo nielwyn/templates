@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import mentorImage from '../assets/images/mentor_clara_portrait_1792059117422.jpg';
+import mentorImage from '../assets/images/mentor_clara_portrait_1792059117422.webp';
 
 export default function AboutMentor() {
   const [imageError, setImageError] = useState(false);
@@ -18,6 +18,10 @@ export default function AboutMentor() {
                   src={mentorImage}
                   alt="Clara Vane, founder and lead mentor at Studio Narra"
                   className="w-full h-[520px] object-cover"
+                  width={896}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setImageError(true)}
                 />

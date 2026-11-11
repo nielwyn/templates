@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { VAULT_ASSETS } from '../data/content';
-import atmosphereImage from '../assets/images/workspace_workshop_atmosphere_1792059117830.jpg';
+import atmosphereImage from '../assets/images/workspace_workshop_atmosphere_1792059117830.webp';
 
 export default function VaultDeliverables() {
   const [imageError, setImageError] = useState(false);
@@ -35,6 +35,10 @@ export default function VaultDeliverables() {
                   src={atmosphereImage}
                   alt="Physical still life of strategy notebooks, fountain pen, and color swatches"
                   className="w-full h-[260px] sm:h-[300px] object-cover"
+                  width={1376}
+                  height={768}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setImageError(true)}
                 />

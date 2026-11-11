@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import heroImage from '../assets/images/hero_editorial_founder_1792059117016.jpg';
+import heroImage from '../assets/images/hero_editorial_founder_1792059117016.webp';
 
 interface HeroProps {
   onApplyClick: () => void;
@@ -81,6 +81,10 @@ export default function Hero({ onApplyClick }: HeroProps) {
                   src={heroImage}
                   alt="Creative studio founder working in sunlit architectural atelier"
                   className="w-full h-[460px] sm:h-[540px] object-cover"
+                  width={1200}
+                  height={896}
+                  loading="eager" fetchPriority="high"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setImageError(true)}
                 />
